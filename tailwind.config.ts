@@ -66,6 +66,9 @@ const config: Config = {
         'rise-slow': 'riseSlow 1.4s cubic-bezier(0.2, 0, 0.2, 1) forwards',
         'scroll-cue': 'scrollCue 1.8s ease-in-out infinite',
         'line-grow': 'lineGrow 1.2s cubic-bezier(0.2, 0, 0.2, 1) forwards',
+        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+        'float-y': 'floatY 6s ease-in-out infinite',
+        'shimmer': 'shimmer 3s linear infinite',
       },
       keyframes: {
         fadeInUp: {
@@ -91,6 +94,18 @@ const config: Config = {
         lineGrow: {
           '0%': { transform: 'scaleX(0)', transformOrigin: 'left' },
           '100%': { transform: 'scaleX(1)', transformOrigin: 'left' },
+        },
+        pulseSoft: {
+          '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+          '50%': { opacity: '1', transform: 'scale(1.15)' },
+        },
+        floatY: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
         },
       },
     },

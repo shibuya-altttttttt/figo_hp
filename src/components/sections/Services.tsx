@@ -58,7 +58,11 @@ export function Services() {
                   alt=""
                   fill
                   sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.03]"
+                  className="object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(0.2,0,0.2,1)] group-hover:scale-[1.08]"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/10"
+                  aria-hidden="true"
                 />
                 <span className="absolute left-6 top-6 inline-flex items-center rounded-full bg-base/95 px-3 py-1 font-sans text-caption font-medium tracking-wider text-ink">
                   {service.subtitle}
@@ -69,7 +73,9 @@ export function Services() {
                   <span className="font-sans text-caption font-medium tracking-[0.3em] text-accent">
                     {service.number}
                   </span>
-                  <span className="h-px flex-1 bg-neutral-200" aria-hidden="true" />
+                  <span className="relative h-px flex-1 overflow-hidden bg-neutral-200" aria-hidden="true">
+                    <span className="absolute inset-y-0 left-0 w-0 origin-left bg-accent transition-all duration-700 ease-[cubic-bezier(0.2,0,0.2,1)] group-hover:w-full" />
+                  </span>
                 </div>
                 <h3 className="mt-4 font-serif text-h3-sm md:text-h3 font-medium text-ink">
                   {service.title}

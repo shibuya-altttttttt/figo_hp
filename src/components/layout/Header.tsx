@@ -76,17 +76,18 @@ export function Header() {
                   <Link
                     href={link.href}
                     className={cn(
-                      'relative font-sans text-caption font-medium tracking-wide transition-colors',
+                      'group relative font-sans text-caption font-medium tracking-wide transition-colors',
                       active ? 'text-accent' : 'text-ink hover:text-accent',
                     )}
                   >
                     {link.label}
-                    {active ? (
-                      <span
-                        className="absolute -bottom-2 left-0 h-0.5 w-full bg-accent"
-                        aria-hidden="true"
-                      />
-                    ) : null}
+                    <span
+                      className={cn(
+                        'absolute -bottom-2 left-0 h-0.5 w-full origin-left bg-accent transition-transform duration-300 ease-[cubic-bezier(0.2,0,0.2,1)]',
+                        active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
+                      )}
+                      aria-hidden="true"
+                    />
                   </Link>
                 </li>
               );

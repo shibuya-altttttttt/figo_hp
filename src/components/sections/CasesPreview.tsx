@@ -35,7 +35,7 @@ export function CasesPreview() {
               key={record.slug}
               as="li"
               delay={idx * 120}
-              className="flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-base transition-transform duration-500 ease-[cubic-bezier(0.2,0,0.2,1)] hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-30px_rgba(26,26,26,0.35)]"
+              className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-200 bg-base transition-all duration-500 ease-[cubic-bezier(0.2,0,0.2,1)] hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-[0_30px_60px_-30px_rgba(26,26,26,0.35)]"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
                 {record.image ? (
@@ -44,7 +44,7 @@ export function CasesPreview() {
                     alt={record.image.alt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(0.2,0,0.2,1)] group-hover:scale-[1.06]"
                     style={{
                       objectPosition: record.image.objectPosition ?? 'center',
                     }}
