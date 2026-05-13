@@ -26,11 +26,9 @@ export function MessagePreview() {
             <p className="section-heading-en">Representative Message</p>
             <h2
               id="message-heading"
-              className="mt-4 font-serif text-h2-sm md:text-h2 font-medium text-ink text-balance"
+              className="mt-4 font-serif text-h2-sm md:text-h2 font-medium text-ink text-balance leading-[1.3]"
             >
-              顔が見える信頼関係を、
-              <br />
-              大切に。
+              顔が見える信頼関係を、大切に。
             </h2>
             <div className="mt-8 space-y-5 text-body leading-[1.95] text-neutral-700">
               <p>

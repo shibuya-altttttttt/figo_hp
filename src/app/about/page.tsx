@@ -67,9 +67,7 @@ const profile: { label: string; value: React.ReactNode }[] = [
       <>
         {siteConfig.address.postal}
         <br />
-        東京都港区新橋1-12-9
-        <br />
-        新橋プレイス609
+        東京都港区新橋1-12-9 新橋プレイス609
       </>
     ),
   },
@@ -106,7 +104,7 @@ export default function AboutPage() {
       <LocalBusinessJsonLd />
       <PageHero
         eyebrow="About"
-        title="次の世代へ、価値をつなぐ会社。"
+        title="価値を創り、価値を守る会社。"
         lead="株式会社Figoは、東京・新橋を拠点に、不動産コンサルティングおよび不動産再生事業を行う専門会社です。購入・保有・売却・継承のライフサイクル全体で、お客様の資産価値を支えます。"
       />
       <Breadcrumb items={[{ label: '会社概要' }]} />

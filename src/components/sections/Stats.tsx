@@ -38,11 +38,9 @@ export function Stats() {
             <p className="section-heading-en !text-accent">Our Principles</p>
             <h2
               id="principles-heading"
-              className="mt-4 font-serif text-h2-sm md:text-h2 font-medium text-white text-balance"
+              className="mt-4 font-serif text-h2-sm md:text-h2 font-medium text-white text-balance leading-[1.3]"
             >
-              数字ではなく、
-              <br />
-              姿勢で応える。
+              数字ではなく、姿勢で応える。
             </h2>
             <p className="mt-6 text-body leading-[1.95] text-white/75">
               Figoは「何件対応した」「いくら動かした」という過去の数字を前面に置きません。

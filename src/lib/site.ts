@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: '株式会社Figo',
   nameEn: 'FIGO GROUP',
-  tagline: '次の世代へ、価値をつなぐ。',
+  tagline: '価値を創り、価値を守る。',
   description:
     '株式会社Figoは、東京・新橋を拠点に不動産コンサルティング、および不動産再生事業を行う専門会社です。購入・保有・売却のライフサイクル全体で、お客様一人ひとりに最適なソリューションをご提案します。',
   url: 'https://www.f-figo.com',

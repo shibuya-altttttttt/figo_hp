@@ -32,14 +32,12 @@ export function ValueProposition() {
             <p className="section-heading-en">Why Figo</p>
             <h2
               id="value-heading"
-              className="mt-4 font-serif text-h2-sm md:text-h2 font-medium text-ink text-balance"
+              className="mt-4 font-serif text-h2-sm md:text-h2 font-medium text-ink text-balance leading-[1.25]"
             >
-              顔が見える信頼関係を、
-              <br />
-              大切に。
+              Figoが大切にしている、3つの姿勢。
             </h2>
             <p className="mt-6 text-body md:text-body-lg leading-[1.95] text-neutral-700">
-              不動産の取引には、不安や疑問がつきものです。だからこそFigoは「顔が見える信頼関係」を大切にし、お客様の課題や目標に真正面から向き合うことを使命としています。
+              不動産の取引には、不安や疑問がつきものです。だからこそFigoは、お客様一人ひとりに真正面から向き合うことを使命とし、3つの姿勢を大切にしています。
             </p>
             <p className="mt-6 font-serif text-h4 leading-[1.7] text-ink/80 md:text-h3-sm">
               &ldquo;価値を創り、価値を守る。&rdquo;
