@@ -27,7 +27,9 @@ export const cases: CaseRecord[] = [
     type: '区分マンション',
     dealType: '仲介',
     prefecture: '東京都',
-    area: '品川区二葉',
+    area: '品川区二葉4丁目',
+    station: '都営浅草線「中延」駅 / 東急大井町線「中延」駅 圏内',
+    structure: '鉄筋コンクリート造',
     closedDate: '2026-03-20',
     closedDisplay: '2026年3月',
     image: {
@@ -35,7 +37,7 @@ export const cases: CaseRecord[] = [
       alt: '菱和パレス品川中延(東京都品川区二葉)の外観',
       objectPosition: 'center',
     },
-    note: '物件詳細は守秘事項のため非公開。',
+    note: '個別住戸の所在階・専有面積などの詳細は守秘事項のため非公開としています。',
   },
   {
     slug: 'wien-residence',

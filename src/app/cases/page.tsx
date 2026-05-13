@@ -20,7 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-const sortedCases = [...cases].sort((a, b) => (a.closedDate < b.closedDate ? 1 : -1));
+const sortedCases = [...cases].sort((a, b) => {
+  const aIsBunjo = a.type === '区分マンション';
+  const bIsBunjo = b.type === '区分マンション';
+  if (aIsBunjo !== bIsBunjo) return aIsBunjo ? 1 : -1;
+  return a.closedDate < b.closedDate ? 1 : -1;
+});
 
 const brokerageCases = sortedCases.filter((c) => c.dealType === '仲介');
 const purchaseCases = sortedCases.filter((c) => c.dealType === '買取');
