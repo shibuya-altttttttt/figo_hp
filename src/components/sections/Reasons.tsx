@@ -59,21 +59,26 @@ export function Reasons() {
           {reasons.map((reason, idx) => {
             const Icon = reason.icon;
             return (
-              <Reveal key={reason.title} delay={(idx % 3) * 100} className="flex gap-5">
-                <div
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent/30 bg-base text-accent"
-                  aria-hidden="true"
-                >
-                  <Icon className="h-5 w-5" strokeWidth={1.5} />
+              <Reveal key={reason.title} delay={(idx % 3) * 100} className="flex flex-col gap-4 border-t border-ink/15 pt-6">
+                <div className="flex items-center justify-between">
+                  <Icon
+                    className="h-6 w-6 text-ink"
+                    strokeWidth={1.25}
+                    aria-hidden="true"
+                  />
+                  <span
+                    className="font-sans text-caption tracking-[0.3em] text-neutral-400"
+                    aria-hidden="true"
+                  >
+                    {String(idx + 1).padStart(2, '0')}
+                  </span>
                 </div>
-                <div>
-                  <h3 className="font-serif text-h4 font-medium text-ink">
-                    {reason.title}
-                  </h3>
-                  <p className="mt-3 text-body leading-[1.9] text-neutral-700">
-                    {reason.description}
-                  </p>
-                </div>
+                <h3 className="font-serif text-h4 font-medium text-ink leading-[1.4]">
+                  {reason.title}
+                </h3>
+                <p className="text-body leading-[1.9] text-neutral-700">
+                  {reason.description}
+                </p>
               </Reveal>
             );
           })}
