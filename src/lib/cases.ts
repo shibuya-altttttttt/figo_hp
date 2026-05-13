@@ -22,6 +22,17 @@ export type CaseRecord = {
 
 export const cases: CaseRecord[] = [
   {
+    slug: 'hishiwa-shinagawa-nakanobu',
+    name: '菱和パレス品川中延',
+    type: '区分マンション',
+    dealType: '仲介',
+    prefecture: '東京都',
+    area: '品川区二葉',
+    closedDate: '2026-03-20',
+    closedDisplay: '2026年3月',
+    note: '物件詳細は守秘事項のため非公開。',
+  },
+  {
     slug: 'wien-residence',
     name: 'ウィーンレジデンス',
     type: '一棟マンション',

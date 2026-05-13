@@ -53,12 +53,6 @@ export function NewsList({ articles }: NewsListProps) {
             );
           })}
         </ul>
-        <p
-          className="ml-auto font-sans text-caption text-neutral-500"
-          aria-live="polite"
-        >
-          {visible.length}件
-        </p>
       </div>
 
       {visible.length === 0 ? (
