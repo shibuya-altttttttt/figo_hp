@@ -24,7 +24,8 @@ export function ContactForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const payload = {
       name: String(formData.get('name') ?? '').trim(),
       email: String(formData.get('email') ?? '').trim(),
@@ -38,62 +39,89 @@ export function ContactForm() {
     setStatus({ state: 'submitting' });
     setFieldErrors(new Set());
 
+    let res: Response;
     try {
-      const res = await fetch('/api/contact', {
+      res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      const data = (await res.json().catch(() => ({}))) as {
-        ok?: boolean;
-        error?: string;
-        fields?: string[];
-      };
-
-      if (!res.ok || !data.ok) {
-        if (data.fields) setFieldErrors(new Set(data.fields));
-        setStatus({
-          state: 'error',
-          message:
-            data.error === 'validation'
-              ? '入力内容に不備があります。エラー箇所をご確認ください。'
-              : '送信に失敗しました。時間をおいて再度お試しください。',
-        });
-        return;
-      }
-
-      setStatus({ state: 'success' });
-      event.currentTarget.reset();
     } catch {
       setStatus({
         state: 'error',
         message: '通信エラーが発生しました。再度お試しください。',
       });
+      return;
+    }
+
+    const data = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      error?: string;
+      fields?: string[];
+    };
+
+    if (!res.ok || !data.ok) {
+      if (data.fields) setFieldErrors(new Set(data.fields));
+      setStatus({
+        state: 'error',
+        message:
+          data.error === 'validation'
+            ? '入力内容に不備があります。エラー箇所をご確認ください。'
+            : '送信に失敗しました。時間をおいて再度お試しください。',
+      });
+      return;
+    }
+
+    try {
+      form.reset();
+    } catch {
+      // form may already be unmounted
+    }
+    setStatus({ state: 'success' });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 
   if (status.state === 'success') {
     return (
-      <div className="rounded-lg border border-success/30 bg-success/5 p-8 md:p-10">
-        <div className="flex items-start gap-4">
-          <CheckCircle2
-            className="h-7 w-7 shrink-0 text-success"
-            aria-hidden="true"
-          />
+      <div
+        role="status"
+        aria-live="polite"
+        className="rounded-lg border border-success/30 bg-gradient-to-br from-success/10 via-base to-base p-10 md:p-14 shadow-[0_30px_60px_-30px_rgba(46,125,91,0.25)]"
+      >
+        <div className="flex flex-col items-start gap-6">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-success/15">
+            <CheckCircle2
+              className="h-8 w-8 text-success"
+              aria-hidden="true"
+            />
+          </div>
           <div>
-            <h3 className="font-serif text-h3-sm font-medium text-ink">
-              お問い合わせを受け付けました。
-            </h3>
-            <p className="mt-3 text-body leading-[1.85] text-neutral-700">
-              内容を確認のうえ、担当者より2営業日以内にご返信いたします。お急ぎの場合はお電話(03-6274-6185)でもお気軽にご連絡ください。
+            <p className="font-sans text-caption font-medium uppercase tracking-[0.3em] text-success">
+              Message Sent
             </p>
-            <button
-              type="button"
-              onClick={() => setStatus({ state: 'idle' })}
-              className="mt-6 inline-flex items-center gap-2 font-sans text-caption font-medium text-ink underline underline-offset-4 hover:text-accent"
-            >
-              新しい問い合わせを送る
-            </button>
+            <h3 className="mt-3 font-serif text-h2-sm md:text-h2 font-medium text-ink text-balance">
+              お問い合わせを送信しました。
+            </h3>
+            <p className="mt-6 max-w-xl text-body leading-[1.9] text-neutral-700">
+              内容を確認のうえ、担当者より2営業日以内にご返信いたします。お急ぎの場合は、お電話 (03-6274-6185 / 平日 9:00-18:00) でもお気軽にご連絡ください。
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="/"
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 font-sans text-body font-medium text-white transition-colors hover:bg-neutral-700"
+              >
+                トップへ戻る
+              </a>
+              <button
+                type="button"
+                onClick={() => setStatus({ state: 'idle' })}
+                className="inline-flex min-h-[48px] items-center gap-2 px-2 py-3 font-sans text-body font-medium text-ink underline underline-offset-4 hover:text-accent"
+              >
+                新しい問い合わせを送る
+              </button>
+            </div>
           </div>
         </div>
       </div>
