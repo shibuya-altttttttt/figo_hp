@@ -14,12 +14,12 @@ import { siteConfig } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'サービス一覧',
   description:
-    '不動産コンサルティング事業と不動産再生事業——Figoは、購入・保有・売却のライフサイクル全体でお客様の不動産資産価値を最大化する、2つの事業を展開しています。',
+    '東京・新橋の不動産コンサルティング・再生事業。一棟マンション・一棟ビル・区分マンションの売買仲介、相続対策、資産継承、収益不動産の購入支援、低稼働物件の再生まで、Figoが2つの事業領域でカバーします。',
   alternates: { canonical: '/services' },
   openGraph: {
-    title: 'サービス一覧 | 株式会社Figo',
+    title: 'サービス一覧 | 株式会社Figo(新橋)',
     description:
-      '不動産コンサルティング事業と不動産再生事業。Figoの2つの事業領域をご紹介します。',
+      '新橋の不動産コンサルティング会社、Figoのサービス一覧。不動産売買仲介・相続/資産継承・不動産再生事業。',
     url: '/services',
   },
 };

@@ -10,11 +10,11 @@ import { siteConfig } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'お問い合わせ',
   description:
-    '株式会社Figoへのお問い合わせ・無料相談予約。お問い合わせフォーム、お電話のいずれでも承っています。初回ご相談は無料、秘密厳守。',
+    '東京・新橋の不動産コンサルティング会社、株式会社Figoへのお問い合わせ・無料相談予約。一棟マンション・一棟ビル・区分マンションの売買、相続対策、資産継承、不動産再生まで承ります。お電話(03-6274-6185)・フォームのいずれでも対応。',
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: 'お問い合わせ | 株式会社Figo',
-    description: '無料相談予約・お問い合わせフォーム。初回ご相談は無料です。',
+    title: 'お問い合わせ・無料相談 | 株式会社Figo(新橋)',
+    description: '新橋の不動産コンサルティング、無料相談予約フォーム。初回ご相談は無料、秘密厳守。',
     url: '/contact',
   },
 };

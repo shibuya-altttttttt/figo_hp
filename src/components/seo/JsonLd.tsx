@@ -4,11 +4,13 @@ export function OrganizationJsonLd() {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${siteConfig.url}/#org`,
     name: siteConfig.name,
-    alternateName: siteConfig.nameEn,
+    alternateName: [siteConfig.nameEn, 'Figo', '株式会社フィーゴ'],
     url: siteConfig.url,
     logo: `${siteConfig.url}/images/figo-logo.png`,
     description: siteConfig.description,
+    telephone: siteConfig.contact.tel,
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'JP',
@@ -17,9 +19,19 @@ export function OrganizationJsonLd() {
       streetAddress: siteConfig.address.street,
       postalCode: siteConfig.address.postal.replace('〒', ''),
     },
-    founder: {
-      '@type': 'Person',
-      name: siteConfig.representative,
+    founder: [
+      { '@type': 'Person', name: '金 潤求', jobTitle: '代表取締役' },
+      { '@type': 'Person', name: '渋谷 優太', jobTitle: '取締役' },
+    ],
+    foundingDate: '2025',
+    foundingLocation: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: '港区',
+        addressRegion: '東京都',
+        addressCountry: 'JP',
+      },
     },
   };
 
@@ -189,13 +201,16 @@ export function ArticleJsonLd({
 export function LocalBusinessJsonLd() {
   const data = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'RealEstateAgent',
+    '@id': `${siteConfig.url}/#organization`,
     name: siteConfig.name,
-    alternateName: siteConfig.nameEn,
+    alternateName: [siteConfig.nameEn, 'Figo'],
     url: siteConfig.url,
+    logo: `${siteConfig.url}/images/figo-logo.png`,
     image: `${siteConfig.url}/images/figo-logo.png`,
     description: siteConfig.description,
     telephone: siteConfig.contact.tel,
+    priceRange: '￥￥￥',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'JP',
@@ -217,6 +232,51 @@ export function LocalBusinessJsonLd() {
         closes: '18:00',
       },
     ],
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: '東京都' },
+      { '@type': 'AdministrativeArea', name: '神奈川県' },
+      { '@type': 'AdministrativeArea', name: '埼玉県' },
+      { '@type': 'AdministrativeArea', name: '千葉県' },
+    ],
+    knowsAbout: [
+      '不動産売買',
+      '不動産仲介',
+      '不動産コンサルティング',
+      '不動産相続',
+      '資産継承',
+      '相続対策',
+      '不動産再生',
+      '一棟マンション',
+      '一棟ビル',
+      '区分マンション',
+      '収益不動産',
+      '共有名義の解消',
+    ],
+    makesOffer: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: '不動産コンサルティング事業',
+          description:
+            '一棟マンション・一棟ビル・区分マンションの購入・売却仲介、相続対策、財産管理、資産継承コンサルティングまで一貫サポート',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: '不動産再生事業',
+          description:
+            '利用価値が低迷している不動産を取得し、リーシング・リノベーション・運営改善で資産価値を再生',
+        },
+      },
+    ],
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      name: '宅地建物取引業免許',
+      identifier: '東京都知事(1)第112936号',
+    },
   };
 
   return (
