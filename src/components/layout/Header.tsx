@@ -104,14 +104,18 @@ export function Header() {
             <Phone className="h-4 w-4" aria-hidden="true" />
             {siteConfig.contact.telDisplay}
           </a>
-          <ButtonLink
+          <Link
             href="/contact"
-            size="sm"
-            className="hidden lg:inline-flex"
-            withArrow
+            className="group hidden items-center gap-2 border-b border-ink/30 pb-1 font-sans text-caption font-medium tracking-wide text-ink transition-colors hover:border-ink lg:inline-flex"
           >
-            無料相談
-          </ButtonLink>
+            <span>お問い合わせ</span>
+            <span
+              aria-hidden="true"
+              className="inline-block transition-transform duration-200 group-hover:translate-x-0.5"
+            >
+              →
+            </span>
+          </Link>
           <button
             type="button"
             aria-label={drawerOpen ? 'メニューを閉じる' : 'メニューを開く'}
@@ -160,12 +164,17 @@ export function Header() {
             })}
           </ul>
           <div className="mt-6 flex flex-col gap-3">
-            <ButtonLink href="/contact" size="lg" withArrow>
-              無料相談を予約する
+            <ButtonLink
+              href="/contact"
+              size="lg"
+              variant="outline"
+              withArrow
+            >
+              お問い合わせ
             </ButtonLink>
             <a
               href={`tel:${siteConfig.contact.tel}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-ink px-6 py-3 font-sans text-body font-medium text-ink hover:bg-ink hover:text-white min-h-[48px]"
+              className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-sans text-body font-medium text-ink hover:text-accent min-h-[48px]"
             >
               <Phone className="h-4 w-4" aria-hidden="true" />
               {siteConfig.contact.telDisplay}
