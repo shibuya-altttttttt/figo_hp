@@ -1,9 +1,10 @@
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { Container } from '@/components/layout/Container';
 
 type PageHeroProps = {
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   lead?: string;
   image?: {
     src: string;

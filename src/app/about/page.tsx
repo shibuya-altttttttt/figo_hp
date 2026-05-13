@@ -104,7 +104,13 @@ export default function AboutPage() {
       <LocalBusinessJsonLd />
       <PageHero
         eyebrow="About"
-        title="価値を創り、価値を守る会社。"
+        title={
+          <>
+            価値を創り、
+            <br className="sm:hidden" />
+            価値を守る会社。
+          </>
+        }
         lead="株式会社Figoは、東京・新橋を拠点に、不動産コンサルティングおよび不動産再生事業を行う専門会社です。購入・保有・売却・継承のライフサイクル全体で、お客様の資産価値を支えます。"
       />
       <Breadcrumb items={[{ label: '会社概要' }]} />
