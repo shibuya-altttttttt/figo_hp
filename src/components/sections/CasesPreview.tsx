@@ -7,7 +7,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { cases as caseRecords } from '@/lib/cases';
 
 const sortedCases = [...caseRecords]
-  .filter((c) => c.dealType === '仲介')
+  .filter((c) => c.dealType === '仲介' && c.type !== '区分マンション')
   .sort((a, b) => (a.closedDate < b.closedDate ? 1 : -1));
 
 export function CasesPreview() {
