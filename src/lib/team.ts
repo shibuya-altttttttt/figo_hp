@@ -39,7 +39,7 @@ export const team: TeamMember[] = [
     career: [
       { period: '2020年', body: '北海道大学 卒業' },
       { period: '2020年', body: '株式会社コスモスイニシア 入社' },
-      { period: '2022年', body: '株式会社リクルート 入社(SUUMO 広告営業)' },
+      { period: '2022年', body: '株式会社リクルート 入社' },
       { period: '2025年', body: '株式会社Figoを創業' },
     ],
   },
