@@ -1,0 +1,178 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { Menu, X, Phone } from 'lucide-react';
+import { ButtonLink } from '@/components/ui/Button';
+import { navigationLinks, siteConfig } from '@/lib/site';
+import { cn } from '@/lib/cn';
+
+export function Header() {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const isTop = pathname === '/';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 24);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setDrawerOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (drawerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [drawerOpen]);
+
+  const solidHeader = scrolled || !isTop || drawerOpen;
+
+  return (
+    <header
+      className={cn(
+        'fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-smooth',
+        solidHeader
+          ? 'border-b border-neutral-200 bg-base/95 backdrop-blur-md shadow-[0_1px_24px_-16px_rgba(0,0,0,0.25)]'
+          : 'bg-transparent',
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 lg:h-20 lg:px-10">
+        <Link
+          href="/"
+          aria-label={`${siteConfig.name} トップへ`}
+          className="flex items-center gap-2"
+        >
+          <Image
+            src="/images/figo-logo.png"
+            alt={siteConfig.name}
+            width={120}
+            height={40}
+            priority
+            className="h-8 w-auto lg:h-10"
+          />
+        </Link>
+
+        <nav aria-label="メインナビゲーション" className="hidden lg:block">
+          <ul className="flex items-center gap-8">
+            {navigationLinks.map((link) => {
+              const active =
+                link.href === '/' ? pathname === '/' : pathname.startsWith(link.href);
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      'relative font-sans text-caption font-medium tracking-wide transition-colors',
+                      active ? 'text-accent' : 'text-ink hover:text-accent',
+                    )}
+                  >
+                    {link.label}
+                    {active ? (
+                      <span
+                        className="absolute -bottom-2 left-0 h-0.5 w-full bg-accent"
+                        aria-hidden="true"
+                      />
+                    ) : null}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        <div className="flex items-center gap-3">
+          <a
+            href={`tel:${siteConfig.contact.tel}`}
+            className="hidden items-center gap-1 font-sans text-caption font-medium text-ink hover:text-accent lg:inline-flex"
+            aria-label={`電話でのお問い合わせ ${siteConfig.contact.telDisplay}`}
+          >
+            <Phone className="h-4 w-4" aria-hidden="true" />
+            {siteConfig.contact.telDisplay}
+          </a>
+          <ButtonLink
+            href="/contact"
+            size="sm"
+            className="hidden lg:inline-flex"
+            withArrow
+          >
+            無料相談
+          </ButtonLink>
+          <button
+            type="button"
+            aria-label={drawerOpen ? 'メニューを閉じる' : 'メニューを開く'}
+            aria-expanded={drawerOpen}
+            aria-controls="mobile-drawer"
+            onClick={() => setDrawerOpen((prev) => !prev)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 bg-base text-ink transition-colors hover:border-ink hover:text-accent lg:hidden"
+          >
+            {drawerOpen ? (
+              <X className="h-5 w-5" aria-hidden="true" />
+            ) : (
+              <Menu className="h-5 w-5" aria-hidden="true" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="mobile-drawer"
+        className={cn(
+          'lg:hidden overflow-hidden transition-[max-height] duration-300 ease-smooth border-b border-neutral-200 bg-base',
+          drawerOpen ? 'max-h-[90vh]' : 'max-h-0',
+        )}
+      >
+        <nav aria-label="モバイルナビゲーション" className="px-5 py-6 sm:px-8">
+          <ul className="flex flex-col divide-y divide-neutral-200">
+            {navigationLinks.map((link) => {
+              const active =
+                link.href === '/' ? pathname === '/' : pathname.startsWith(link.href);
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      'flex items-center justify-between py-4 font-sans text-body font-medium',
+                      active ? 'text-accent' : 'text-ink hover:text-accent',
+                    )}
+                  >
+                    {link.label}
+                    <span aria-hidden="true" className="text-neutral-500">
+                      →
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <div className="mt-6 flex flex-col gap-3">
+            <ButtonLink href="/contact" size="lg" withArrow>
+              無料相談を予約する
+            </ButtonLink>
+            <a
+              href={`tel:${siteConfig.contact.tel}`}
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-ink px-6 py-3 font-sans text-body font-medium text-ink hover:bg-ink hover:text-white min-h-[48px]"
+            >
+              <Phone className="h-4 w-4" aria-hidden="true" />
+              {siteConfig.contact.telDisplay}
+            </a>
+          </div>
+          <p className="mt-5 text-caption text-neutral-500">{siteConfig.contact.hours}</p>
+        </nav>
+      </div>
+    </header>
+  );
+}
