@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import { ButtonLink } from '@/components/ui/Button';
 import { Container } from '@/components/layout/Container';
 
 export function Hero() {
@@ -64,18 +63,10 @@ export function Hero() {
               お客様の不動産資産価値の最大化をサポートします。
             </p>
 
-            <div className="mt-10 sm:mt-12 flex flex-col gap-3 sm:flex-row sm:items-center opacity-0 animate-fade-in-up [animation-delay:1.05s]">
-              <ButtonLink
-                href="/contact"
-                size="lg"
-                withArrow
-                className="!bg-white !text-ink hover:!bg-neutral-100 focus-visible:!ring-white !w-full sm:!w-auto"
-              >
-                無料相談を予約する
-              </ButtonLink>
+            <div className="mt-10 sm:mt-12 opacity-0 animate-fade-in-up [animation-delay:1.05s]">
               <Link
                 href="/services"
-                className="group inline-flex items-center justify-center sm:justify-start gap-2 px-2 py-3 font-sans text-body font-medium text-white/85 transition-colors hover:text-white"
+                className="group inline-flex items-center gap-3 border-b border-white/30 pb-2 font-sans text-body md:text-body-lg font-medium text-white transition-colors hover:border-white"
               >
                 <span>サービスを見る</span>
                 <ArrowRight
