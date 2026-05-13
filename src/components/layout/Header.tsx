@@ -110,7 +110,7 @@ export function Header() {
             className="hidden lg:inline-flex"
             withArrow
           >
-            無料相談
+            お問い合わせ
           </ButtonLink>
           <button
             type="button"
@@ -161,7 +161,7 @@ export function Header() {
           </ul>
           <div className="mt-6 flex flex-col gap-3">
             <ButtonLink href="/contact" size="lg" withArrow>
-              無料相談を予約する
+              お問い合わせ
             </ButtonLink>
             <a
               href={`tel:${siteConfig.contact.tel}`}
