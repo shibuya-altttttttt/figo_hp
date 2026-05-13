@@ -34,6 +34,8 @@ export const team: TeamMember[] = [
     nameEn: 'Shibuya Yuta',
     role: '取締役',
     roleEn: 'Director',
+    lead:
+      '不動産デベロッパーと人材サービスで培った経験を活かし、Figoの不動産コンサルティング・再生事業を共同で推進。物件選定から運営改善まで、実務領域を幅広く担当しています。',
     career: [
       { period: '2020年', body: '北海道大学 卒業' },
       { period: '2020年', body: '株式会社コスモスイニシア 入社' },
