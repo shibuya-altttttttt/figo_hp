@@ -53,8 +53,8 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const toAddress = process.env.MAIL_TO ?? 'info@f-figo.com';
-  const fromAddress = process.env.MAIL_FROM ?? 'Figo Web <noreply@f-figo.com>';
+  const toAddress = process.env.MAIL_TO ?? 'shibuya@f-figo.com';
+  const fromAddress = process.env.MAIL_FROM ?? 'Figo Web <onboarding@resend.dev>';
 
   const safeName = escapeHtml(payload.name ?? '');
   const safeEmail = escapeHtml(payload.email ?? '');
