@@ -30,6 +30,11 @@ export const cases: CaseRecord[] = [
     area: '品川区二葉',
     closedDate: '2026-03-20',
     closedDisplay: '2026年3月',
+    image: {
+      src: '/images/cases/hishiwa-shinagawa-nakanobu/exterior.png',
+      alt: '菱和パレス品川中延(東京都品川区二葉)の外観',
+      objectPosition: 'center',
+    },
     note: '物件詳細は守秘事項のため非公開。',
   },
   {
