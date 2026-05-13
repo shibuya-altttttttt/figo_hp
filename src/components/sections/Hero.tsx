@@ -77,7 +77,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="mt-12 flex items-end justify-between opacity-0 animate-fade-in [animation-delay:1.3s] md:mt-16">
+          <div className="mt-14 flex items-end justify-between opacity-0 animate-fade-in [animation-delay:1.3s] md:mt-16">
             <div className="hidden flex-col gap-1 md:flex">
               <p className="font-sans text-caption uppercase tracking-[0.35em] text-white/45">
                 Scroll
@@ -87,7 +87,7 @@ export function Hero() {
                 aria-hidden="true"
               />
             </div>
-            <div className="grid w-full grid-cols-1 gap-y-4 font-sans text-caption tracking-wider text-white/55 sm:grid-cols-3 sm:gap-x-8 md:w-auto md:gap-x-12">
+            <div className="grid w-full grid-cols-1 gap-y-5 font-sans text-caption tracking-wider text-white/55 sm:grid-cols-3 sm:gap-x-8 md:w-auto md:gap-x-12">
               <div>
                 <p className="text-[0.7rem] font-medium uppercase tracking-[0.3em] text-white/40">
                   Tokyo

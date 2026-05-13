@@ -8,7 +8,7 @@ export function MessagePreview() {
   return (
     <Section id="message" tone="base" aria-labelledby="message-heading">
       <Container>
-        <div className="grid gap-10 md:grid-cols-2 md:gap-16 md:items-center">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-16 md:items-center">
           <Reveal as="figure" delay={0} className="relative order-2 md:order-1">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-neutral-100">
               <Image

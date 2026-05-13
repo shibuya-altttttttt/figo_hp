@@ -29,7 +29,7 @@ export function CasesPreview() {
           </div>
         </div>
 
-        <ul className="mt-14 grid gap-6 md:mt-20 lg:grid-cols-3 lg:gap-8">
+        <ul className="mt-16 grid gap-8 md:mt-20 lg:grid-cols-3 lg:gap-8">
           {previews.map((record, idx) => (
             <Reveal
               key={record.slug}

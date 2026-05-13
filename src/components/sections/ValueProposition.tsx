@@ -55,8 +55,8 @@ export function ValueProposition() {
                 delay={i * 140}
                 className={
                   i === 0
-                    ? 'relative grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 border-t border-neutral-200 pt-10 md:gap-x-10 md:pt-12'
-                    : 'relative mt-10 grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 border-t border-neutral-200 pt-10 md:mt-12 md:gap-x-10 md:pt-12'
+                    ? 'relative grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 border-t border-neutral-200 pt-12 md:gap-x-10 md:pt-12'
+                    : 'relative mt-12 grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 border-t border-neutral-200 pt-12 md:mt-12 md:gap-x-10 md:pt-12'
                 }
               >
                 <span

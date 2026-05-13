@@ -25,7 +25,7 @@ export function News() {
           </div>
         </div>
 
-        <ul className="mt-10 divide-y divide-neutral-200 border-y border-neutral-200">
+        <ul className="mt-12 divide-y divide-neutral-200 border-y border-neutral-200">
           {previews.map((item) => (
             <li key={item.slug}>
               <Link

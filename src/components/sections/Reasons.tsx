@@ -55,7 +55,7 @@ export function Reasons() {
           align="center"
         />
 
-        <div className="mt-14 grid gap-x-8 gap-y-10 md:mt-20 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-14">
+        <div className="mt-16 grid gap-x-8 gap-y-12 md:mt-20 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-14">
           {reasons.map((reason, idx) => {
             const Icon = reason.icon;
             return (

@@ -45,7 +45,7 @@ export function Services() {
           />
         </div>
 
-        <div className="mt-14 grid gap-6 md:mt-20 md:grid-cols-2 md:gap-8">
+        <div className="mt-16 grid gap-8 md:mt-20 md:grid-cols-2 md:gap-8">
           {services.map((service, idx) => (
             <Reveal key={service.slug} delay={idx * 120}>
             <Link
