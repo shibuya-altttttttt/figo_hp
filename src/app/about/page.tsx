@@ -81,14 +81,6 @@ const profile: { label: string; value: React.ReactNode }[] = [
       </a>
     ),
   },
-  {
-    label: 'メール',
-    value: (
-      <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-accent">
-        {siteConfig.contact.email}
-      </a>
-    ),
-  },
   { label: '営業時間', value: siteConfig.contact.hours },
   {
     label: '事業内容',

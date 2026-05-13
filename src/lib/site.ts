@@ -23,7 +23,6 @@ export const siteConfig = {
   contact: {
     tel: '03-6274-6185',
     telDisplay: '03-6274-6185',
-    email: 'info@f-figo.com',
     hours: '平日 9:00 - 18:00',
   },
   social: {},

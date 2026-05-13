@@ -196,7 +196,6 @@ export function LocalBusinessJsonLd() {
     image: `${siteConfig.url}/images/figo-logo.png`,
     description: siteConfig.description,
     telephone: siteConfig.contact.tel,
-    email: siteConfig.contact.email,
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'JP',

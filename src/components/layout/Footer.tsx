@@ -97,15 +97,6 @@ export function Footer() {
                   {siteConfig.contact.telDisplay}
                 </a>
                 <span className="font-sans uppercase tracking-[0.2em] text-white/45">
-                  Mail
-                </span>
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="break-all transition-colors hover:text-accent"
-                >
-                  {siteConfig.contact.email}
-                </a>
-                <span className="font-sans uppercase tracking-[0.2em] text-white/45">
                   Hours
                 </span>
                 <span>{siteConfig.contact.hours}</span>

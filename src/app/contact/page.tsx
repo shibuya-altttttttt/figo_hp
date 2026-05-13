@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Phone, Mail, Clock, MapPin } from 'lucide-react';
+import { Phone, Clock, MapPin } from 'lucide-react';
 import { PageHero } from '@/components/sections/PageHero';
 import { Breadcrumb } from '@/components/layout/Breadcrumb';
 import { Container } from '@/components/layout/Container';
@@ -26,13 +26,6 @@ const contactPoints = [
     value: siteConfig.contact.telDisplay,
     href: `tel:${siteConfig.contact.tel}`,
     sub: siteConfig.contact.hours,
-  },
-  {
-    icon: Mail,
-    label: 'メール',
-    value: siteConfig.contact.email,
-    href: `mailto:${siteConfig.contact.email}`,
-    sub: '24時間受付',
   },
   {
     icon: MapPin,

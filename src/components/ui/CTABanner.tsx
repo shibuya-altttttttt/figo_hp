@@ -1,4 +1,4 @@
-import { Phone, Mail } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { ButtonLink } from './Button';
 import { Container } from '@/components/layout/Container';
 import { siteConfig } from '@/lib/site';
@@ -89,10 +89,6 @@ export function CTABanner({
               <span>お電話：{siteConfig.contact.telDisplay}</span>
             </a>
             <div className="mt-2 space-y-1 text-caption text-neutral-500 md:text-right">
-              <p className="flex items-center gap-2 md:justify-end">
-                <Mail className="h-3.5 w-3.5" aria-hidden="true" />
-                {siteConfig.contact.email}
-              </p>
               <p>営業時間：{siteConfig.contact.hours}</p>
             </div>
           </div>
