@@ -4,6 +4,7 @@ import { siteConfig } from '@/lib/site';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
+import { InitialSplash } from '@/components/ui/InitialSplash';
 import { OrganizationJsonLd } from '@/components/seo/JsonLd';
 import './globals.css';
 
@@ -101,6 +102,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           本文へスキップ
         </a>
         <OrganizationJsonLd />
+        <InitialSplash />
         <ScrollProgress />
         <Header />
         <main id="main" className="flex-1">
