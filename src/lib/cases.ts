@@ -79,7 +79,7 @@ export const cases: CaseRecord[] = [
   },
   {
     slug: 'hachioji',
-    name: '西八王子1棟（メゾン平岡）',
+    name: '西八王子1棟',
     type: '一棟（共同住宅+店舗）',
     dealType: '仲介',
     prefecture: '東京都',
@@ -93,7 +93,7 @@ export const cases: CaseRecord[] = [
     closedDisplay: '2025年10月',
     image: {
       src: '/images/cases/hachioji/exterior.png',
-      alt: '西八王子1棟（メゾン平岡）の外観',
+      alt: '西八王子1棟の外観',
       objectPosition: 'center',
     },
   },
