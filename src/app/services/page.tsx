@@ -50,7 +50,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="不動産の総合サービス。"
-        lead="不動産コンサルティング事業と不動産再生事業——Figoは、購入・保有・売却のライフサイクル全体で、お客様の資産価値を最大化する2つの事業を展開しています。"
+        lead="不動産コンサルティング事業と不動産再生事業——購入・保有・売却・継承のライフサイクル全体で、お客様の不動産資産の最大化と防衛のためにサービスを設計しています。"
       />
       <Breadcrumb items={breadcrumbItems} />
 
