@@ -168,46 +168,29 @@ export default function ServicesPage() {
             lead="どのサービスをご利用いただく場合も、共通の流れでご一緒に進めます。最初の整理だけでも、ご相談の価値はあります。"
           />
 
-          <ol className="mt-14 grid gap-8 md:mt-20 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {consultationFlow.map((step, index) => {
-              const isPivot = index === 1;
-              return (
-                <li
-                  key={step.step}
-                  className={`relative flex flex-col pt-6 ${
-                    isPivot
-                      ? 'border-t-[3px] border-accent lg:-mt-6 lg:pt-9'
-                      : 'border-t-2 border-accent/30'
-                  }`}
-                >
+          <ol className="mt-14 grid gap-10 md:mt-20 md:grid-cols-2 md:gap-x-10 md:gap-y-12 lg:grid-cols-4 lg:gap-8">
+            {consultationFlow.map((step, index) => (
+              <li
+                key={step.step}
+                className="relative flex flex-col border-t-2 border-accent/30 pt-6"
+              >
+                <span className="font-sans text-caption font-medium tracking-[0.3em] text-accent">
+                  {step.step}
+                </span>
+                <h3 className="mt-3 font-serif text-h4 font-medium text-ink">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-body leading-relaxed text-neutral-700">
+                  {step.description}
+                </p>
+                {index < consultationFlow.length - 1 ? (
                   <span
-                    className={
-                      isPivot
-                        ? 'font-serif text-h4 leading-none text-accent'
-                        : 'font-sans text-caption font-medium tracking-[0.3em] text-accent'
-                    }
-                  >
-                    {step.step}
-                  </span>
-                  <h3
-                    className={`mt-3 font-serif font-medium text-ink ${
-                      isPivot ? 'text-h3-sm' : 'text-h4'
-                    }`}
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-body leading-relaxed text-neutral-700">
-                    {step.description}
-                  </p>
-                  {index < consultationFlow.length - 1 ? (
-                    <span
-                      className="absolute -right-3 top-7 hidden h-px w-6 bg-neutral-200 lg:block"
-                      aria-hidden="true"
-                    />
-                  ) : null}
-                </li>
-              );
-            })}
+                    className="pointer-events-none absolute -right-4 top-7 hidden h-px w-6 bg-neutral-200 lg:block"
+                    aria-hidden="true"
+                  />
+                ) : null}
+              </li>
+            ))}
           </ol>
         </Container>
       </Section>
