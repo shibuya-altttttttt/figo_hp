@@ -1,13 +1,10 @@
 import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/Hero';
-import { ValueProposition } from '@/components/sections/ValueProposition';
 import { Services } from '@/components/sections/Services';
 import { Stats } from '@/components/sections/Stats';
 import { MessagePreview } from '@/components/sections/MessagePreview';
 import { CasesPreview } from '@/components/sections/CasesPreview';
-import { Reasons } from '@/components/sections/Reasons';
 import { News } from '@/components/sections/News';
-import { FaqPreview } from '@/components/sections/FaqPreview';
 import { CTABanner } from '@/components/ui/CTABanner';
 import { WebSiteJsonLd } from '@/components/seo/JsonLd';
 import { siteConfig } from '@/lib/site';
@@ -31,14 +28,11 @@ export default function HomePage() {
     <>
       <WebSiteJsonLd />
       <Hero />
-      <ValueProposition />
       <Services />
       <Stats />
       <MessagePreview />
       <CasesPreview />
-      <Reasons />
       <News />
-      <FaqPreview />
       <CTABanner />
     </>
   );
