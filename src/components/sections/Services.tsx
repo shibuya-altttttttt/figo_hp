@@ -39,7 +39,7 @@ export function Services() {
           <SectionHeading
             id="services-heading"
             eyebrow="Services"
-            title="お客様の資産を最大化する、2つの事業。"
+            title="不動産のライフサイクル全体を、ひとつの窓口で。"
             lead="購入・保有・売却から、相続・資産継承・再生まで——お客様の不動産資産価値の最大化と防衛のために、最適な選択肢を組み合わせてご提案します。"
             className="md:max-w-2xl"
           />
