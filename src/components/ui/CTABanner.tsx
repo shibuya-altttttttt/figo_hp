@@ -12,7 +12,7 @@ type CTABannerProps = {
 export function CTABanner({
   eyebrow = 'Free Consultation',
   title = 'まずは、現状を整理するところから。',
-  description = '初回のご相談は無料です。不動産相続・資産継承に関するお悩みを、経験豊富な専門家が丁寧にお伺いし、最適な進め方をご提案します。',
+  description = 'お客様の不動産資産の最大化と防衛のために、独立したプロフェッショナルの立場でコンサルティングを行います。初回のご相談は無料、秘密厳守でお伺いします。',
 }: CTABannerProps) {
   return (
     <section className="relative overflow-hidden bg-neutral-100">

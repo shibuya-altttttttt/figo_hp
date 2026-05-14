@@ -59,8 +59,9 @@ export function Hero() {
             </h1>
 
             <p className="mt-8 sm:mt-10 max-w-xl text-body md:text-body-lg leading-[1.9] text-white/80 opacity-0 animate-fade-in-up [animation-delay:0.85s]">
-              購入・保有・売却。ライフサイクル全体で、
-              お客様の不動産資産価値の最大化をサポートします。
+              購入・保有・売却・継承——ライフサイクル全体で、
+              お客様の不動産資産の最大化と防衛のために、
+              独立したプロフェッショナルの立場で伴走します。
             </p>
 
             <div className="mt-10 sm:mt-12 opacity-0 animate-fade-in-up [animation-delay:1.05s]">
