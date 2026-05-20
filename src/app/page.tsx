@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
 import { Stats } from '@/components/sections/Stats';
-import { MessagePreview } from '@/components/sections/MessagePreview';
+import { LeadershipPreview } from '@/components/sections/LeadershipPreview';
 import { CasesPreview } from '@/components/sections/CasesPreview';
 import { News } from '@/components/sections/News';
 import { CTABanner } from '@/components/ui/CTABanner';
@@ -30,7 +30,7 @@ export default function HomePage() {
       <Hero />
       <Services />
       <Stats />
-      <MessagePreview />
+      <LeadershipPreview />
       <CasesPreview />
       <News />
       <CTABanner />
