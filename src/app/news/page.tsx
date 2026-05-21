@@ -5,6 +5,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { CTABanner } from '@/components/ui/CTABanner';
 import { NewsList } from '@/components/sections/NewsList';
+import { ItemListJsonLd } from '@/components/seo/JsonLd';
 import { sortedNews } from '@/lib/news';
 
 export const metadata: Metadata = {
@@ -23,6 +24,14 @@ export const metadata: Metadata = {
 export default function NewsPage() {
   return (
     <>
+      <ItemListJsonLd
+        name="お知らせ・コラム一覧"
+        items={sortedNews.map((article) => ({
+          name: article.title,
+          url: `/news/${article.slug}`,
+          description: article.excerpt,
+        }))}
+      />
       <PageHero
         eyebrow="News & Column"
         title="お知らせ・コラム。"

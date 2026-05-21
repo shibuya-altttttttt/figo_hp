@@ -71,7 +71,8 @@ export function CasesFilter({ cases }: CasesFilterProps) {
           {visible.map((record) => (
             <li
               key={record.slug}
-              className="grid gap-6 border-b border-neutral-200 pb-12 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-10 md:pb-16"
+              id={record.slug}
+              className="grid gap-6 border-b border-neutral-200 pb-12 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-10 md:pb-16 scroll-mt-28"
             >
               <figure className="relative aspect-[4/3] overflow-hidden rounded-lg bg-neutral-200/60 md:aspect-[5/4]">
                 {record.image ? (

@@ -7,7 +7,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/layout/SectionHeading';
 import { CTABanner } from '@/components/ui/CTABanner';
-import { LocalBusinessJsonLd } from '@/components/seo/JsonLd';
+import { LocalBusinessJsonLd, PersonJsonLd } from '@/components/seo/JsonLd';
 import { siteConfig } from '@/lib/site';
 import { services } from '@/lib/services';
 import { team } from '@/lib/team';
@@ -102,6 +102,46 @@ export default function AboutPage() {
   return (
     <>
       <LocalBusinessJsonLd />
+      <PersonJsonLd
+        name="金 潤求"
+        givenName="潤求"
+        familyName="金"
+        alternateName="Kim Yun-Gu"
+        jobTitle="代表取締役"
+        description="不動産業界での経験を基盤に、相続・資産継承の専門家として、購入・保有・売却のライフサイクル全体でお客様の資産継承をサポート。"
+        alumniOf="同志社大学"
+        knowsAbout={[
+          '不動産売買',
+          '不動産仲介',
+          '不動産コンサルティング',
+          '相続対策',
+          '資産継承',
+          '一棟マンション',
+          '一棟ビル',
+          '区分マンション',
+          '収益不動産',
+        ]}
+        url="/about"
+      />
+      <PersonJsonLd
+        name="渋谷 優太"
+        givenName="優太"
+        familyName="渋谷"
+        alternateName="Shibuya Yuta"
+        jobTitle="取締役"
+        description="不動産デベロッパーでの開発・運用と、SUUMOでの広告営業を通じて培った業界知見を活かし、Figoの不動産コンサルティング・再生事業を共同で推進。"
+        alumniOf="北海道大学"
+        knowsAbout={[
+          '不動産開発',
+          '不動産運用',
+          '賃貸経営',
+          '不動産再生',
+          '物件選定',
+          '新規事業開発',
+          '不動産広告',
+        ]}
+        url="/about"
+      />
       <PageHero
         eyebrow="About"
         title={

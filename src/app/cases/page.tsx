@@ -5,6 +5,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { CTABanner } from '@/components/ui/CTABanner';
 import { CasesFilter } from '@/components/sections/CasesFilter';
+import { ItemListJsonLd } from '@/components/seo/JsonLd';
 import { cases } from '@/lib/cases';
 
 export const metadata: Metadata = {
@@ -37,6 +38,14 @@ const brokeragePrefectures = Array.from(
 export default function CasesPage() {
   return (
     <>
+      <ItemListJsonLd
+        name="株式会社Figo 成約実績一覧"
+        items={sortedCases.map((c) => ({
+          name: `${c.name}（${c.prefecture}${c.area ? c.area : ''}・${c.type}・${c.dealType}）`,
+          url: `/cases#${c.slug}`,
+          description: c.note ?? `${c.closedDisplay}成約。${c.type}（${c.dealType}）。`,
+        }))}
+      />
       <PageHero
         eyebrow="Track Record"
         title="お取扱いした物件の、抜粋。"

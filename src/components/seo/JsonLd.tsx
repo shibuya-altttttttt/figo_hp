@@ -198,6 +198,98 @@ export function ArticleJsonLd({
   );
 }
 
+type PersonJsonLdProps = {
+  name: string;
+  givenName?: string;
+  familyName?: string;
+  alternateName?: string;
+  jobTitle: string;
+  description?: string;
+  alumniOf?: string;
+  worksFor?: string;
+  knowsAbout?: string[];
+  url?: string;
+};
+
+export function PersonJsonLd({
+  name,
+  givenName,
+  familyName,
+  alternateName,
+  jobTitle,
+  description,
+  alumniOf,
+  worksFor,
+  knowsAbout,
+  url,
+}: PersonJsonLdProps) {
+  const data: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name,
+    jobTitle,
+    worksFor: {
+      '@type': 'Organization',
+      name: worksFor ?? siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+  if (givenName) data.givenName = givenName;
+  if (familyName) data.familyName = familyName;
+  if (alternateName) data.alternateName = alternateName;
+  if (description) data.description = description;
+  if (alumniOf) {
+    data.alumniOf = {
+      '@type': 'EducationalOrganization',
+      name: alumniOf,
+    };
+  }
+  if (knowsAbout && knowsAbout.length > 0) data.knowsAbout = knowsAbout;
+  if (url) data.url = url.startsWith('http') ? url : `${siteConfig.url}${url}`;
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+type ItemListJsonLdItem = {
+  name: string;
+  url: string;
+  description?: string;
+};
+
+export function ItemListJsonLd({
+  items,
+  name,
+}: {
+  items: ItemListJsonLdItem[];
+  name?: string;
+}) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    ...(name ? { name } : {}),
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: item.url.startsWith('http') ? item.url : `${siteConfig.url}${item.url}`,
+      name: item.name,
+      ...(item.description ? { description: item.description } : {}),
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
 export function LocalBusinessJsonLd() {
   const data = {
     '@context': 'https://schema.org',

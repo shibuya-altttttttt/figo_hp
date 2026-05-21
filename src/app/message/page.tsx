@@ -5,6 +5,7 @@ import { Breadcrumb } from '@/components/layout/Breadcrumb';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { CTABanner } from '@/components/ui/CTABanner';
+import { PersonJsonLd } from '@/components/seo/JsonLd';
 import { siteConfig } from '@/lib/site';
 import { team } from '@/lib/team';
 
@@ -93,6 +94,26 @@ const credo = [
 export default function MessagePage() {
   return (
     <>
+      <PersonJsonLd
+        name="金 潤求"
+        givenName="潤求"
+        familyName="金"
+        alternateName="Kim Yun-Gu"
+        jobTitle="代表取締役"
+        description="株式会社Figo代表取締役。同志社大学卒業後、株式会社コスモスイニシアの不動産ソリューション事業にて法人向け投資用不動産の開発・仲介・運営に従事。2025年、株式会社Figoを創業。"
+        alumniOf="同志社大学"
+        knowsAbout={[
+          '不動産売買',
+          '不動産仲介',
+          '不動産コンサルティング',
+          '相続対策',
+          '資産継承',
+          '一棟マンション',
+          '一棟ビル',
+          '区分マンション',
+        ]}
+        url="/message"
+      />
       <PageHero
         eyebrow="Representative Message"
         title="お客様の大切な資産を、次世代へ確実に。"
