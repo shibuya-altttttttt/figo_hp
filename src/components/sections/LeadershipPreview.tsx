@@ -40,6 +40,16 @@ export function LeadershipPreview() {
                   {member.lead}
                 </p>
               ) : null}
+              {member.careerSummary ? (
+                <div className="mt-6 border-t border-neutral-200 pt-5">
+                  <p className="font-sans text-caption font-medium uppercase tracking-[0.25em] text-neutral-500">
+                    Career
+                  </p>
+                  <p className="mt-3 text-body leading-[1.9] text-neutral-700">
+                    {member.careerSummary}
+                  </p>
+                </div>
+              ) : null}
             </Reveal>
           ))}
         </div>
