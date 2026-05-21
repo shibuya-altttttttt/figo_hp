@@ -6,7 +6,7 @@ import { LeadershipPreview } from '@/components/sections/LeadershipPreview';
 import { CasesPreview } from '@/components/sections/CasesPreview';
 import { News } from '@/components/sections/News';
 import { CTABanner } from '@/components/ui/CTABanner';
-import { WebSiteJsonLd } from '@/components/seo/JsonLd';
+import { WebSiteJsonLd, LocalBusinessJsonLd } from '@/components/seo/JsonLd';
 import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -27,6 +27,7 @@ export default function HomePage() {
   return (
     <>
       <WebSiteJsonLd />
+      <LocalBusinessJsonLd />
       <Hero />
       <Services />
       <Stats />
