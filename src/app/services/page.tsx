@@ -8,6 +8,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/layout/SectionHeading';
 import { CTABanner } from '@/components/ui/CTABanner';
+import { CollectionPageJsonLd } from '@/components/seo/JsonLd';
 import { services, consultationFlow } from '@/lib/services';
 import { siteConfig } from '@/lib/site';
 
@@ -47,6 +48,11 @@ const breadcrumbItems = [{ label: 'サービス' }];
 export default function ServicesPage() {
   return (
     <>
+      <CollectionPageJsonLd
+        name="サービス一覧 | 株式会社Figo"
+        description="新橋の不動産コンサルティング会社、株式会社Figoのサービス一覧。不動産売買仲介・相続/資産継承・不動産再生事業。"
+        url="/services"
+      />
       <PageHero
         eyebrow="Services"
         title="不動産の総合サービス。"

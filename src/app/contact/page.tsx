@@ -5,6 +5,7 @@ import { Breadcrumb } from '@/components/layout/Breadcrumb';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { ContactForm } from '@/components/sections/ContactForm';
+import { ContactPageJsonLd } from '@/components/seo/JsonLd';
 import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ const contactPoints = [
 export default function ContactPage() {
   return (
     <>
+      <ContactPageJsonLd url="/contact" />
       <PageHero
         eyebrow="Contact"
         title="お問い合わせ・無料相談。"

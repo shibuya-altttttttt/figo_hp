@@ -255,6 +255,86 @@ export function PersonJsonLd({
   );
 }
 
+type CollectionPageJsonLdProps = {
+  name: string;
+  description: string;
+  url: string;
+};
+
+export function CollectionPageJsonLd({
+  name,
+  description,
+  url,
+}: CollectionPageJsonLdProps) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name,
+    description,
+    url: url.startsWith('http') ? url : `${siteConfig.url}${url}`,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+type ContactPageJsonLdProps = {
+  url: string;
+};
+
+export function ContactPageJsonLd({ url }: ContactPageJsonLdProps) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: `お問い合わせ | ${siteConfig.name}`,
+    url: url.startsWith('http') ? url : `${siteConfig.url}${url}`,
+    description:
+      '株式会社Figoへのお問い合わせ。不動産コンサルティング・相続/資産継承・不動産再生に関するご相談を承ります。',
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteConfig.url,
+      telephone: siteConfig.contact.tel,
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'JP',
+        addressRegion: siteConfig.address.prefecture,
+        addressLocality: siteConfig.address.city,
+        streetAddress: siteConfig.address.street,
+        postalCode: siteConfig.address.postal.replace('〒', ''),
+      },
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: siteConfig.contact.tel,
+      contactType: 'customer support',
+      availableLanguage: ['Japanese'],
+      areaServed: 'JP',
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
 type ItemListJsonLdItem = {
   name: string;
   url: string;

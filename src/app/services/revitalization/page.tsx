@@ -7,7 +7,17 @@ const service = serviceMap.revitalization;
 export const metadata: Metadata = {
   title: `${service.title} | 株式会社Figo`,
   description:
-    '利用価値が低迷している不動産を取得し、リーシング・リノベーション等によって収益改善・資産価値向上を実現。物件取得から改修、市場供給まで、Figoが事業主体として一貫して手がけます。',
+    '東京・新橋の不動産再生事業。低稼働物件・空き家・築古一棟物件・賃貸需要が落ちた区分マンションを買取または事業主体として取得し、リーシング・リノベーション・運営改善で収益改善と資産価値再生を実現します。',
+  keywords: [
+    '不動産再生 東京',
+    '低稼働物件 買取',
+    '空き家 買取',
+    '築古 一棟 再生',
+    'リノベーション 収益化',
+    '賃貸需要 改善',
+    '区分マンション 買取',
+    'Figo 不動産再生',
+  ],
   alternates: { canonical: '/services/revitalization' },
   openGraph: {
     title: `${service.title} | 株式会社Figo`,
