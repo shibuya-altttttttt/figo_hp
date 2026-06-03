@@ -8,7 +8,7 @@ import { cases as caseRecords } from '@/lib/cases';
 
 const sortedCases = [...caseRecords]
   .filter((c) => c.dealType === '仲介' && c.type !== '区分マンション')
-  .sort((a, b) => (a.closedDate < b.closedDate ? 1 : -1));
+  .sort((a, b) => ((a.closedDate ?? '') < (b.closedDate ?? '') ? 1 : -1));
 
 export function CasesPreview() {
   const previews = sortedCases.slice(0, 3);

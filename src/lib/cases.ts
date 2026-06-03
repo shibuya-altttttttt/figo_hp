@@ -10,8 +10,8 @@ export type CaseRecord = {
   units?: string;
   built?: string;
   size?: string;
-  closedDate: string;
-  closedDisplay: string;
+  closedDate?: string;
+  closedDisplay?: string;
   image?: {
     src: string;
     alt: string;
@@ -150,5 +150,43 @@ export const cases: CaseRecord[] = [
       alt: '殿塚ビル（東京都世田谷区代田）の外観',
       objectPosition: 'center',
     },
+  },
+  {
+    slug: 'sakado-yamadacho',
+    name: '坂戸市山田町 一棟アパート＋土地',
+    type: '一棟アパート＋土地',
+    dealType: '買取',
+    prefecture: '埼玉県',
+    area: '坂戸市山田町',
+    station: '東武東上線「坂戸」駅 徒歩10分',
+    structure: '木造スレート葺 2階建（共同住宅）',
+    built: '1995年(平成7年)11月築',
+    size: '土地 計729.81㎡（アパート敷地317.99㎡＋隣接地411.82㎡）/ 建物 218.60㎡',
+    note: '相続案件。賃貸中の一棟アパート（オーナーチェンジ）と隣接地を一括取得しました。取引金額・詳細所在地は守秘事項のため非公開としています。',
+  },
+  {
+    slug: 'iwatsuki-tochi',
+    name: 'さいたま市岩槻区 土地',
+    type: '土地',
+    dealType: '買取',
+    prefecture: '埼玉県',
+    area: 'さいたま市岩槻区岩槻',
+    station: '東武アーバンパークライン（野田線）「岩槻」駅 徒歩7分',
+    structure: '第一種中高層住居専用地域（現況：古家あり）',
+    size: '土地 234.84㎡（71.03坪）',
+    note: '岩槻駅西口土地区画整理事業の区域内。取引金額・詳細所在地は守秘事項のため非公開としています。',
+  },
+  {
+    slug: 'minami-kibogaoka-kodate',
+    name: '横浜市旭区 中古戸建',
+    type: '戸建',
+    dealType: '買取',
+    prefecture: '神奈川県',
+    area: '横浜市旭区南希望が丘',
+    station: '相鉄本線「希望ヶ丘」駅 徒歩15分',
+    structure: '木造軸組 2階建',
+    built: '1990年(平成2年)3月築',
+    size: '土地 100.02㎡（30.25坪）/ 建物 83.63㎡（25.29坪）',
+    note: '第一種低層住居専用地域。取引金額・詳細所在地は守秘事項のため非公開としています。',
   },
 ];

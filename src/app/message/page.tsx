@@ -202,21 +202,16 @@ export default function MessagePage() {
               </p>
             </div>
 
-            <dl className="divide-y divide-neutral-200 border-y border-neutral-200">
+            <ul className="divide-y divide-neutral-200 border-y border-neutral-200">
               {career.map((item, i) => (
-                <div
+                <li
                   key={i}
-                  className="grid grid-cols-[80px_1fr] gap-4 py-4 md:grid-cols-[110px_1fr] md:gap-8 md:py-5"
+                  className="py-4 text-body leading-[1.85] text-neutral-800 md:py-5"
                 >
-                  <dt className="font-sans text-caption tracking-[0.1em] text-neutral-500">
-                    {item.period}
-                  </dt>
-                  <dd className="text-body leading-[1.85] text-neutral-800">
-                    {item.body}
-                  </dd>
-                </div>
+                  {item.body}
+                </li>
               ))}
-            </dl>
+            </ul>
           </div>
         </Container>
       </Section>

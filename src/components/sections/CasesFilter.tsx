@@ -103,9 +103,11 @@ export function CasesFilter({ cases }: CasesFilterProps) {
 
               <div className="flex flex-col">
                 <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-                  <span className="font-sans text-caption font-medium tracking-[0.3em] text-accent">
-                    {record.closedDisplay}
-                  </span>
+                  {record.closedDisplay ? (
+                    <span className="font-sans text-caption font-medium tracking-[0.3em] text-accent">
+                      {record.closedDisplay}
+                    </span>
+                  ) : null}
                   <span className="inline-flex items-center rounded-full border border-ink/15 px-3 py-1 font-sans text-caption text-neutral-700">
                     {record.type}
                   </span>

@@ -25,7 +25,7 @@ const sortedCases = [...cases].sort((a, b) => {
   const aIsBunjo = a.type === '区分マンション';
   const bIsBunjo = b.type === '区分マンション';
   if (aIsBunjo !== bIsBunjo) return aIsBunjo ? 1 : -1;
-  return a.closedDate < b.closedDate ? 1 : -1;
+  return (a.closedDate ?? '') < (b.closedDate ?? '') ? 1 : -1;
 });
 
 const brokerageCases = sortedCases.filter((c) => c.dealType === '仲介');
@@ -33,6 +33,14 @@ const purchaseCases = sortedCases.filter((c) => c.dealType === '買取');
 
 const brokeragePrefectures = Array.from(
   new Set(brokerageCases.map((c) => c.prefecture)),
+).join('・');
+
+const purchasePrefectures = Array.from(
+  new Set(purchaseCases.map((c) => c.prefecture)),
+).join('・');
+
+const purchaseTypes = Array.from(
+  new Set(purchaseCases.map((c) => c.type)),
 ).join('・');
 
 export default function CasesPage() {
@@ -135,24 +143,65 @@ export default function CasesPage() {
               </p>
             </div>
 
-            <div className="self-end">
-              {purchaseCases.length > 0 ? (
-                <CasesFilter cases={purchaseCases} />
-              ) : (
-                <div className="rounded-lg border border-dashed border-neutral-300 bg-base p-8 md:p-10">
-                  <p className="font-sans text-caption uppercase tracking-[0.2em] text-neutral-500">
-                    Coming Soon
-                  </p>
-                  <p className="mt-3 font-serif text-h4 md:text-h3-sm leading-tight text-ink">
-                    現在、決済前の案件があります。
-                  </p>
-                  <p className="mt-4 text-body leading-relaxed text-neutral-700">
-                    決済完了後に、エリア・物件種別など差し支えのない範囲で順次掲載いたします。買取に関するご相談は、お問い合わせよりお気軽にご連絡ください。
-                  </p>
+            {purchaseCases.length > 0 ? (
+              <dl className="grid grid-cols-2 gap-4 self-end md:gap-6">
+                <div className="border-t-2 border-accent/30 pt-4">
+                  <dt className="font-sans text-caption uppercase tracking-[0.2em] text-neutral-500">
+                    Areas
+                  </dt>
+                  <dd className="mt-2 font-serif text-h3-sm leading-tight text-ink">
+                    {purchasePrefectures}
+                  </dd>
                 </div>
-              )}
-            </div>
+                <div className="border-t-2 border-accent/30 pt-4">
+                  <dt className="font-sans text-caption uppercase tracking-[0.2em] text-neutral-500">
+                    Property
+                  </dt>
+                  <dd className="mt-2 font-serif text-h3-sm leading-tight text-ink">
+                    {purchaseTypes}
+                  </dd>
+                </div>
+              </dl>
+            ) : null}
           </div>
+        </Container>
+      </Section>
+
+      <Section tone="neutral" aria-labelledby="purchase-list-heading">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-4 pb-2">
+            <h2
+              id="purchase-list-heading"
+              className="font-serif text-h3-sm md:text-h3 font-medium text-ink"
+            >
+              買取物件一覧
+            </h2>
+            <p className="font-sans text-caption text-neutral-500">新しい順</p>
+          </div>
+
+          {purchaseCases.length > 0 ? (
+            <>
+              <div className="mt-6">
+                <CasesFilter cases={purchaseCases} />
+              </div>
+
+              <p className="mt-12 max-w-2xl text-caption leading-relaxed text-neutral-500">
+                ※ 取引金額・お客様情報・物件の詳細所在地は守秘事項のため非公開としています。買取に関するご相談・売却のご検討は、お問い合わせよりお気軽にご連絡ください。
+              </p>
+            </>
+          ) : (
+            <div className="mt-6 rounded-lg border border-dashed border-neutral-300 bg-base p-8 md:p-10">
+              <p className="font-sans text-caption uppercase tracking-[0.2em] text-neutral-500">
+                Coming Soon
+              </p>
+              <p className="mt-3 font-serif text-h4 md:text-h3-sm leading-tight text-ink">
+                現在、決済前の案件があります。
+              </p>
+              <p className="mt-4 text-body leading-relaxed text-neutral-700">
+                決済完了後に、エリア・物件種別など差し支えのない範囲で順次掲載いたします。買取に関するご相談は、お問い合わせよりお気軽にご連絡ください。
+              </p>
+            </div>
+          )}
         </Container>
       </Section>
 
