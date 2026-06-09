@@ -76,14 +76,21 @@ export function CasesFilter({ cases }: CasesFilterProps) {
             >
               <figure className="relative aspect-[4/3] overflow-hidden rounded-lg bg-neutral-200/60 md:aspect-[5/4]">
                 {record.image ? (
-                  <Image
-                    src={record.image.src}
-                    alt={record.image.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover"
-                    style={{ objectPosition: record.image.objectPosition ?? 'center' }}
-                  />
+                  <>
+                    <Image
+                      src={record.image.src}
+                      alt={record.image.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                      className="object-cover"
+                      style={{ objectPosition: record.image.objectPosition ?? 'center' }}
+                    />
+                    {record.image.isIllustration ? (
+                      <span className="absolute right-3 top-3 rounded-full bg-ink/75 px-3 py-1 font-sans text-caption font-medium tracking-[0.15em] text-white backdrop-blur-sm">
+                        イメージ
+                      </span>
+                    ) : null}
+                  </>
                 ) : (
                   <div
                     className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-neutral-200/80 via-base to-neutral-200/40"

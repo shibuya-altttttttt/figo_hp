@@ -16,6 +16,7 @@ export type CaseRecord = {
     src: string;
     alt: string;
     objectPosition?: string;
+    isIllustration?: boolean;
   };
   note?: string;
 };
@@ -146,9 +147,10 @@ export const cases: CaseRecord[] = [
     closedDate: '2025-07-18',
     closedDisplay: '2025年7月',
     image: {
-      src: '/images/cases/daita/exterior.png',
-      alt: '殿塚ビル（東京都世田谷区代田）の外観',
+      src: '/images/cases/daita/land.jpg',
+      alt: '土地（更地）のイメージ',
       objectPosition: 'center',
+      isIllustration: true,
     },
   },
   {
@@ -162,6 +164,12 @@ export const cases: CaseRecord[] = [
     structure: '木造スレート葺 2階建（共同住宅）',
     built: '1995年(平成7年)11月築',
     size: '土地 計729.81㎡（アパート敷地317.99㎡＋隣接地411.82㎡）/ 建物 218.60㎡',
+    image: {
+      src: '/images/cases/sakado-yamadacho/land.jpg',
+      alt: '土地（隣接地を含む）のイメージ',
+      objectPosition: 'center',
+      isIllustration: true,
+    },
     note: '相続案件。賃貸中の一棟アパート（オーナーチェンジ）と隣接地を一括取得しました。取引金額・詳細所在地は守秘事項のため非公開としています。',
   },
   {
@@ -174,6 +182,12 @@ export const cases: CaseRecord[] = [
     station: '東武アーバンパークライン（野田線）「岩槻」駅 徒歩7分',
     structure: '第一種中高層住居専用地域（現況：古家あり）',
     size: '土地 234.84㎡（71.03坪）',
+    image: {
+      src: '/images/cases/iwatsuki-tochi/land.jpg',
+      alt: '土地（空き地）のイメージ',
+      objectPosition: 'center',
+      isIllustration: true,
+    },
     note: '岩槻駅西口土地区画整理事業の区域内。取引金額・詳細所在地は守秘事項のため非公開としています。',
   },
   {
@@ -187,6 +201,12 @@ export const cases: CaseRecord[] = [
     structure: '木造軸組 2階建',
     built: '1990年(平成2年)3月築',
     size: '土地 100.02㎡（30.25坪）/ 建物 83.63㎡（25.29坪）',
+    image: {
+      src: '/images/cases/minami-kibogaoka-kodate/photo.jpg',
+      alt: '中古戸建のイメージ',
+      objectPosition: 'center',
+      isIllustration: true,
+    },
     note: '第一種低層住居専用地域。取引金額・詳細所在地は守秘事項のため非公開としています。',
   },
 ];
