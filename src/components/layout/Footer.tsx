@@ -5,6 +5,8 @@ import { siteConfig } from '@/lib/site';
 const serviceLinks = [
   { label: '不動産コンサルティング事業', href: '/services/consulting' },
   { label: '不動産再生事業', href: '/services/revitalization' },
+  { label: '売却のご相談', href: '/sell' },
+  { label: '購入のご相談', href: '/buy' },
 ];
 
 const companyLinks = [

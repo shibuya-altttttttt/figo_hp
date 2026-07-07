@@ -67,7 +67,7 @@ export function Header() {
         </Link>
 
         <nav aria-label="メインナビゲーション" className="hidden lg:block">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-5 xl:gap-7">
             {navigationLinks.map((link) => {
               const active =
                 link.href === '/' ? pathname === '/' : pathname.startsWith(link.href);
@@ -98,7 +98,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <a
             href={`tel:${siteConfig.contact.tel}`}
-            className="hidden items-center gap-1 font-sans text-caption font-medium text-ink hover:text-accent lg:inline-flex"
+            className="hidden items-center gap-1 font-sans text-caption font-medium text-ink hover:text-accent xl:inline-flex"
             aria-label={`電話でのお問い合わせ ${siteConfig.contact.telDisplay}`}
           >
             <Phone className="h-4 w-4" aria-hidden="true" />

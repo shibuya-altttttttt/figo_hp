@@ -32,9 +32,10 @@ export type SiteConfig = typeof siteConfig;
 
 export const navigationLinks: { label: string; href: string }[] = [
   { label: 'サービス', href: '/services' },
+  { label: '成約実績', href: '/cases' },
+  { label: '売却のご相談', href: '/sell' },
+  { label: '購入のご相談', href: '/buy' },
   { label: '会社概要', href: '/about' },
   { label: '代表挨拶', href: '/message' },
-  { label: '成約実績', href: '/cases' },
-  { label: 'お知らせ', href: '/news' },
   { label: 'よくあるご質問', href: '/faq' },
 ];
