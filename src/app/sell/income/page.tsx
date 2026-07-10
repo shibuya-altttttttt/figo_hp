@@ -5,6 +5,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/layout/SectionHeading';
 import { SellForm } from '@/components/sections/SellForm';
+import { ButtonLink } from '@/components/ui/Button';
 import { ServiceJsonLd, FaqPageJsonLd } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
@@ -281,6 +282,48 @@ export default function SellIncomePage() {
                 </div>
               ))}
             </dl>
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="ink" aria-labelledby="income-guide-heading">
+        <Container>
+          <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.9fr)] md:gap-16">
+            <div>
+              <p className="section-heading-en text-accent">Free Guide</p>
+              <h2
+                id="income-guide-heading"
+                className="mt-4 font-serif text-h2-sm md:text-h2 font-medium text-white text-balance"
+              >
+                「一棟オーナーの
+                <br className="md:hidden" />
+                出口ガイド」を無料配布。
+              </h2>
+              <p className="mt-6 text-body leading-[1.95] text-neutral-300">
+                残債・築古・相続・空室・税金——「売りにくい」と感じている一棟を、仲介と買取の両面から手取りで考えるための小冊子です。よくある疑問と実務上の考え方を、7つのテーマにまとめました。ご相談の前の下調べにどうぞ。
+              </p>
+              <ul className="mt-6 space-y-2 text-body text-neutral-300">
+                <li>・残債があっても売れるのか／任意売却という選択</li>
+                <li>・旧耐震・築40年超・再建築不可の売り方</li>
+                <li>・相続・共有・税金と、手取りの計算</li>
+              </ul>
+            </div>
+            <div className="flex flex-col items-start gap-4 md:items-center md:text-center">
+              <ButtonLink
+                href="/guide/ittou-deguchi-guide.html"
+                external
+                variant="primary"
+                size="lg"
+                withArrow
+              >
+                ガイドを読む（無料）
+              </ButtonLink>
+              <p className="text-caption leading-relaxed text-neutral-400">
+                別タブで開きます。ブラウザの印刷メニューから
+                <br className="hidden md:block" />
+                PDF保存もできます（登録不要）。
+              </p>
+            </div>
           </div>
         </Container>
       </Section>

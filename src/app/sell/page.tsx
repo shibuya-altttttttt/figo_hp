@@ -11,7 +11,7 @@ import { ServiceJsonLd } from '@/components/seo/JsonLd';
 import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: '不動産売却のご相談（一棟収益・土地・戸建て）',
+  title: '不動産売却のご相談（一棟収益・区分ワンルーム・土地・戸建て）',
   description:
     '一棟マンション・一棟アパートなどの収益不動産、相続した実家・空き家・土地・戸建ての売却相談。一括査定サイトとは違い、担当ひとり・営業電話なし。根拠ある無料査定と手取り試算をお出しします。東京・新橋の株式会社Figo。',
   alternates: { canonical: '/sell' },
@@ -33,6 +33,17 @@ const paths = [
       '入居者がいるまま売却（オーナーチェンジ）',
       '残債がある物件の手取り試算',
       'ポータルに載せない「未公開」売却',
+    ],
+  },
+  {
+    href: '/sell/kubun',
+    eyebrow: 'Investment Condo',
+    title: '区分投資マンションの売却',
+    lead: 'ワンルーム・区分の投資マンション。残債・サブリース・新築の値下がりで「売りにくい」と感じている一戸から、手取りで考えます。',
+    points: [
+      '残債が売値を上回る区分の手取り試算',
+      'サブリース（家賃保証）付きのまま売却',
+      '仲介と買取、両方の実額を比較',
     ],
   },
   {
@@ -94,16 +105,16 @@ export default function SellPage() {
         <Container>
           <SectionHeading
             id="sell-paths-heading"
-            eyebrow="Two Paths"
+            eyebrow="Three Paths"
             title={
               <>
                 売る物件に合わせて、
                 <br className="md:hidden" />
-                2つの入り口。
+                3つの入り口。
               </>
             }
           />
-          <div className="mt-14 grid gap-8 md:mt-20 md:grid-cols-2 md:gap-10">
+          <div className="mt-14 grid gap-8 md:mt-20 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
             {paths.map((path) => (
               <Link
                 key={path.href}

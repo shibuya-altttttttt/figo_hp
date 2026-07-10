@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>一棟オーナーの出口ガイド | 株式会社Figo</title>
+<style>
+  :root {
+    --ink: #1A1A1A;
+    --paper: #FBF9F5;
+    --paper2: #F4F0E8;
+    --accent: #E8721F;
+    --line: #DED8CC;
+    --sub: #6B6459;
+    --serif: "Yu Mincho", "游明朝", "Hiragino Mincho ProN", serif;
+    --sans: "Yu Gothic", "游ゴシック", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d8d4cc; font-family: var(--sans); color: var(--ink); line-height: 1.9; -webkit-font-smoothing: antialiased; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 12mm auto;
+    background: var(--paper);
+    padding: 22mm 20mm;
+    position: relative;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.18);
+    overflow: hidden;
+  }
+  .page::before {
+    content: "";
+    position: absolute; left: 0; top: 0; right: 0; height: 4px;
+    background: linear-gradient(to right, var(--accent), rgba(232,114,31,0.15));
+  }
+
+  .eyebrow { font-family: var(--sans); font-size: 11px; letter-spacing: .34em; color: var(--accent); font-weight: 700; }
+  .footer { position: absolute; left: 20mm; right: 20mm; bottom: 12mm; display: flex; justify-content: space-between; font-size: 10.5px; color: var(--sub); border-top: 1px solid var(--line); padding-top: 6px; }
+
+  h1 { font-family: var(--serif); font-weight: 600; font-size: 40px; line-height: 1.35; letter-spacing: .02em; }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: 23px; line-height: 1.5; margin-bottom: 4px; }
+  h3 { font-family: var(--serif); font-weight: 600; font-size: 16.5px; color: var(--ink); }
+  p { font-size: 13.5px; color: #2c2a26; }
+  .lead { font-size: 14.5px; line-height: 2.0; }
+
+  /* 表紙 */
+  .cover { display: flex; flex-direction: column; justify-content: center; }
+  .cover .logo { font-family: var(--serif); font-size: 30px; font-weight: 700; letter-spacing: .04em; }
+  .cover .logo span { color: var(--accent); }
+  .cover .title-block { margin-top: 46mm; }
+  .cover h1 { font-size: 46px; }
+  .cover .sub { margin-top: 20px; font-size: 15px; color: var(--sub); max-width: 130mm; line-height: 2.0; }
+  .cover .band { margin-top: 40mm; padding: 18px 22px; background: var(--paper2); border-left: 4px solid var(--accent); }
+  .cover .band p { font-size: 13px; color: #33302b; }
+
+  /* 本文レイアウト */
+  .kicker { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .kicker .bar { width: 26px; height: 2px; background: var(--accent); }
+  .section-intro { color: var(--sub); font-size: 13px; margin: 6px 0 18px; }
+
+  .qa { border-top: 1px solid var(--line); padding: 15px 0 4px; }
+  .qa:last-child { border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+  .qa .q { display: flex; gap: 10px; align-items: baseline; }
+  .qa .q .mark { font-family: var(--serif); color: var(--accent); font-weight: 700; font-size: 18px; flex-shrink: 0; }
+  .qa .q h3 { font-size: 15.5px; }
+  .qa .a { margin: 7px 0 0 26px; font-size: 12.8px; color: #34322d; line-height: 1.85; }
+  .qa .more { margin: 6px 0 0 26px; font-size: 11px; color: var(--accent); letter-spacing: .02em; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; margin-top: 8px; }
+
+  .callout { margin-top: 20px; background: var(--paper2); padding: 16px 20px; border-radius: 4px; }
+  .callout h3 { font-size: 14px; margin-bottom: 6px; }
+  .callout p { font-size: 12.5px; color: #34322d; }
+
+  ul.check { list-style: none; margin-top: 6px; }
+  ul.check li { font-size: 13px; padding: 8px 0 8px 26px; position: relative; border-bottom: 1px dashed var(--line); color: #2c2a26; }
+  ul.check li::before { content: "✓"; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
+
+  /* CTA最終ページ */
+  .cta { display: flex; flex-direction: column; justify-content: center; }
+  .cta .box { border: 1px solid var(--line); border-radius: 6px; padding: 26px 28px; background: #fff; }
+  .cta .row { display: grid; grid-template-columns: 92px 1fr; gap: 6px 14px; font-size: 13.5px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+  .cta .row:last-child { border-bottom: 0; }
+  .cta .row .k { color: var(--sub); font-size: 11.5px; letter-spacing: .12em; padding-top: 2px; }
+  .cta .row .v { color: var(--ink); font-weight: 600; }
+  .cta .big { font-family: var(--serif); font-size: 26px; color: var(--accent); font-weight: 700; }
+
+  .note-print { text-align: center; padding: 14px; color: #555; font-size: 12px; background: #efece6; }
+  @media print {
+    body { background: #fff; }
+    .note-print { display: none; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; width: 100%; min-height: 100vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="note-print">この資料は印刷（A4）／PDF保存を前提に作成しています。ブラウザの印刷メニューから「PDFに保存」でそのまま冊子になります。</div>
+
+<!-- 表紙 -->
+<section class="page cover">
+  <div class="logo">FI<span>G</span>O</div>
+  <div class="title-block">
+    <p class="eyebrow">FOR OWNERS OF INCOME PROPERTY</p>
+    <h1>一棟オーナーの<br />出口ガイド</h1>
+    <p class="sub">残債、築古、相続、空室、税金——「売りにくい」と感じている一棟を、どう出口に向けるか。仲介と買取の両面から、手取りで考えるための一冊です。</p>
+  </div>
+  <div class="band">
+    <p>この冊子は、一棟マンション・一棟アパートの売却を検討されている方、そのご相談を受ける税理士・司法書士・管理会社の皆さまに向けて、株式会社Figoが作成しました。</p>
+  </div>
+  <div class="footer"><span>株式会社Figo</span><span>宅地建物取引業免許 東京都知事(1)第112936号</span></div>
+</section>
+
+<!-- はじめに -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">INTRODUCTION</span></div>
+  <h2>「この物件は売れないのでは」の多くは、思い込みです。</h2>
+  <p class="lead" style="margin-top:16px;">
+    残債が売値を上回っている。築40年を超えた。旧耐震で融資が付かない。入居者がいる。相続で兄弟の共有になっている——。こうした一棟を前に、「もう売れない」「大手に断られた」と諦めてしまう方は少なくありません。
+  </p>
+  <p class="lead" style="margin-top:14px;">
+    しかし実務の上では、これらの多くに打ち手があります。売れるかどうかを分けるのは物件の状態そのものより、<b>正しい買い手に、正しい価格で、正しい売り方で届けられるか</b>です。そしてもう一つ大切なのは、売却価格ではなく、税金や残債を差し引いた後に<b>手元にいくら残るか（手取り）</b>で判断することです。
+  </p>
+  <div class="callout">
+    <h3>この冊子の使い方</h3>
+    <p>次のページから、一棟オーナーが直面しやすい7つのテーマごとに、よくある疑問と実務上の考え方をまとめています。ご自身の状況に近い項目からお読みください。各テーマの詳しい解説は、末尾のFigoのサイトでも公開しています。</p>
+  </div>
+  <div class="callout" style="margin-top:14px;">
+    <h3>Figoについて</h3>
+    <p>株式会社Figoは、東京・新橋の不動産会社です。一棟収益不動産の売買仲介に加え、自社での買取も行っています。そのため「まず仲介で高く」「難しければ買取で確実に」と、一つの窓口で両にらみのご提案ができます。残債のある物件や、他社で断られた物件のご相談も承っています。</p>
+  </div>
+  <div class="footer"><span>一棟オーナーの出口ガイド</span><span>01</span></div>
+</section>
+
+<!-- 1 残債・ローン -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 1 ／ 残債・ローンが重い</span></div>
+  <h2>残債があっても、一棟は売れる。</h2>
+  <p class="section-intro">鍵は「引渡しの日に抵当権を外せるか」。残債の額そのものではありません。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>売却額が残債を下回りそう。売れますか？</h3></div>
+    <p class="a">売れないとは限りません。決済日に売却代金と手元資金でローンを完済し抵当権を抹消できれば成立します。まず確認すべきは「売ったらいくら足りないか」。不足分は自己資金で埋める、任意売却で調整する、価格を上げてから売る、の3つで対処します。</p>
+    <p class="more">▶ 詳しくは「残債が売却額を上回る一棟マンションは売れるのか」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>返済がきつい。借り換えと売却どちらが得？</h3></div>
+    <p class="a">今後5年持ち続けた場合の手残り累計と、今売った場合の手取りを並べて比べます。借り換えは資金繰りを楽にしますが、築年や空室のリスクは消えません。数字で比較すれば、感覚に頼らず判断できます。</p>
+    <p class="more">▶ 詳しくは「返済がきつい一棟、借り換えと売却どちらが得か」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>返済が滞りそう。競売になる前にできることは？</h3></div>
+    <p class="a">任意売却という道があります。金融機関の同意を得て市場で売る方法で、競売より高く売れ、時期もある程度こちらの都合を反映でき、近隣にも知られません。動くのは早いほど選択肢が多く残ります。</p>
+    <p class="more">▶ 詳しくは「一棟アパートの任意売却——競売になる前にできること」</p>
+  </div>
+  <div class="footer"><span>一棟オーナーの出口ガイド</span><span>02</span></div>
+</section>
+
+<!-- 2 収支悪化 -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 2 ／ 収支の悪化・売り時</span></div>
+  <h2>手残りが減り始めたら、出口を考える節目。</h2>
+  <p class="section-intro">帳簿は黒字なのに手元のお金が減る——デッドクロスと減価償却切れの局面です。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>デッドクロスが来た。売るべき？</h3></div>
+    <p class="a">判断基準は3つ。①今後5年の税引後キャッシュフロー累計と今の手取りの比較 ②大規模修繕の前か後か ③買い手が融資を引ける市況か。相場の底は誰にも当てられません。数字で見て判断します。</p>
+    <p class="more">▶ 詳しくは「デッドクロスが来た一棟アパート、売り時の判断基準」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>家賃が下がり続けています。</h3></div>
+    <p class="a">収益物件の価格は賃料から逆算されるため、賃料の下落は売値を直接削ります。下落が構造的（築古・エリア縮小）なら、<b>まだ相応の賃料が取れているうちのほうが高く売れます</b>。待つほど売値も下がります。</p>
+    <p class="more">▶ 詳しくは「家賃が下がり続ける一棟、売却タイミングの見極め」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>大規模修繕の前。直してから売るべき？</h3></div>
+    <p class="a">かけた修繕費が全額売値に乗るとは限りません。買い手（投資家・業者）は自分の基準で直す前提で買うため、多くの場合「現況のまま修繕費を織り込んだ価格で売る」ほうが手取りが良くなります。見積もりを取って比較します。</p>
+    <p class="more">▶ 詳しくは「大規模修繕の前に一棟を売るべきか」</p>
+  </div>
+  <div class="footer"><span>一棟オーナーの出口ガイド</span><span>03</span></div>
+</section>
+
+<!-- 3 築古・旧耐震 -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 3 ／ 築古・旧耐震・再建築不可</span></div>
+  <h2>「価値ゼロ」ではない。建物と土地は別物。</h2>
+  <p class="section-intro">大手が敬遠しがちな築古こそ、買い手と価格の付き方を知ることが肝心です。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>旧耐震・築40年超。もう売れない？</h3></div>
+    <p class="a">建物の価値が薄くても、土地に価値があれば売れます。むしろ土地値で買われることが多い。買い手は現金や特定金融機関を使える投資家、土地・再生目的の業者など。旧耐震・築古を扱い慣れた相手に届けるのが鍵です。</p>
+    <p class="more">▶ 詳しくは「旧耐震の一棟マンションは売れるのか」「築40年の一棟アパート、まだ売れるのか」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>再建築不可・検査済証がない物件は？</h3></div>
+    <p class="a">再建築不可でも、現況利用の投資家や隣地と一体で解消できる業者が買います。43条許可や隣地取得で価値が上がる余地も。検査済証がない場合は「既存不適格」か「違法建築」かの切り分けが先。正確に開示して、それでも買う層に届けます。</p>
+    <p class="more">▶ 詳しくは「再建築不可の一棟を売る」「検査済証がない一棟マンションの売却」</p>
+  </div>
+  <div class="callout">
+    <h3>融資が付きにくい一棟こそ、買い手の見極めを</h3>
+    <p>融資が付きにくい物件は、現金買いの投資家・再生業者・買取など「融資に頼らない買い手」に直接届けられるかで結果が変わります。広く公開して売れ残るほど不利になります。</p>
+  </div>
+  <div class="footer"><span>一棟オーナーの出口ガイド</span><span>04</span></div>
+</section>
+
+<!-- 4 入居・運営トラブル -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 4 ／ 入居者・運営のトラブル</span></div>
+  <h2>入居者がいても、こじれていても、売れる。</h2>
+  <p class="section-intro">立ち退きは不要。トラブルは「どう扱って売るか」で手取りが変わります。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>入居者がいます。立ち退きが必要？</h3></div>
+    <p class="a">不要です。入居者がいるまま所有者だけ変わる「オーナーチェンジ」が収益物件では標準的。むしろ満室に近いほど高く評価されます。引渡しまでの賃料は売主のもの。入居者に知られず進めることも可能です。</p>
+    <p class="more">▶ 詳しくは「入居者がいるまま一棟マンションを売る」</p>
+  </div>
+  <div class="two">
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>家賃滞納者がいる</h3></div>
+      <p class="a">滞納債権を売主に残すか買主へ引き継ぐか、整理して売ります。明け渡しが絡む場合は現況で買う業者も。</p>
+    </div>
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>空室だらけ</h3></div>
+      <p class="a">埋めてから売るか、再生の伸びしろとして業者に売るか。時間と体力で選びます。</p>
+    </div>
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>事故物件になった</h3></div>
+      <p class="a">一棟なら該当住戸単位で考えます。告知義務を守り、心理的瑕疵に理解のある買主や買取で。</p>
+    </div>
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>サブリース中／建替えたい</h3></div>
+      <p class="a">サブリースは付いたまま売るのが現実的。建替えは立ち退き込みで買う業者に現況で売る道も。</p>
+    </div>
+  </div>
+  <p class="more" style="margin-left:0; margin-top:14px;">▶ 詳しくは各テーマの解説（家賃滞納／空室／事故物件／サブリース／立ち退き）をFigoのサイトで公開しています。</p>
+  <div class="footer"><span>一棟オーナーの出口ガイド</span><span>05</span></div>
+</section>
+
+<!-- 5 相続・共有 -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 5 ／ 相続・共有・権利関係</span></div>
+  <h2>共有のまま置くほど、解決は難しくなる。</h2>
+  <p class="section-intro">2024年の相続登記義務化を機に、相続した一棟の出口を考える方が増えています。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>相続した一棟を兄弟で分けたい。</h3></div>
+    <p class="a">共有のまま持つと、売却も貸し出しも全員の同意が必要になり、次の相続で当事者がさらに増えます。最も揉めにくいのは、売却して代金を分ける「換価分割」。現金なら一円単位できれいに分けられます。</p>
+    <p class="more">▶ 詳しくは「相続した一棟アパートを兄弟で分ける」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>相続税の納税で売りたい。</h3></div>
+    <p class="a">申告・納付期限は相続開始から10ヶ月。期限に追われて安く売る失敗が多い局面です。早く準備を始めること、相続開始から3年10ヶ月以内の売却で使える「取得費加算の特例」を押さえることが大切です。</p>
+    <p class="more">▶ 詳しくは「相続税の納税で一棟を売る」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>借地権の一棟／親が認知症で名義が動かせない。</h3></div>
+    <p class="a">借地権は地主の承諾（承諾料）を得て売却可能。底地と一体で扱うと価値が上がります。認知症で判断能力がない場合は成年後見の手続きが必要で、時間がかかるため早めの相談を。</p>
+    <p class="more">▶ 詳しくは「借地権の一棟アパートを売る」「親が認知症、名義の一棟を売るには」</p>
+  </div>
+  <div class="footer"><span>一棟オーナーの出口ガイド</span><span>06</span></div>
+</section>
+
+<!-- 6 税金・手取り -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 6 ／ 税金と手取り</span></div>
+  <h2>大事なのは売却価格ではなく、手取り。</h2>
+  <p class="section-intro">「安く売ったのに税金がかかる」——一棟特有の落とし穴を知っておきましょう。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>買値より安く売るのに税金がかかる？</h3></div>
+    <p class="a">あり得ます。保有中に建物を減価償却してきた分、税金計算上の取得費（簿価）が下がっているためです。長く持って多く償却した物件ほど、譲渡益が出やすくなります。税率は保有期間で約20%（長期）と約39%（短期）に分かれます。</p>
+    <p class="more">▶ 詳しくは「一棟マンション売却の税金——譲渡所得の落とし穴」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>「5年」で税率が変わると聞いたが？</h3></div>
+    <p class="a">短期・長期の判定は「売った年の1月1日時点で保有5年超か」。取得から単純に5年ではなく、実質は足かけ6年ほど。基準日をまたぐだけで税率がほぼ半分になるため、数ヶ月の時期調整が手取りを大きく変えます。</p>
+    <p class="more">▶ 詳しくは「一棟は5年待つべきか——短期・長期譲渡の分かれ目」</p>
+  </div>
+  <div class="callout">
+    <h3>手取り＝売却価格から、これらを引いた額</h3>
+    <p>ローン残債の返済／仲介手数料／譲渡所得税・住民税／（課税事業者なら）建物分の消費税／抵当権抹消などの登記費用／敷金の引き継ぎ／固定資産税・賃料の日割り清算。特に見落としやすいのが<b>敷金と税金</b>です。Figoは査定時にこれら全項目を織り込んだ手取り試算をお出しします。</p>
+  </div>
+  <p style="font-size:11px; color:var(--sub); margin-top:12px;">※税額は個別の状況により異なります。正確な計算は税理士にご確認ください。Figoは提携の税理士・司法書士と連携して進めます。</p>
+  <div class="footer"><span>一棟オーナーの出口ガイド</span><span>07</span></div>
+</section>
+
+<!-- 7 チェック＆売り方 -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 7 ／ 売り方と、相談の前に</span></div>
+  <h2>一社の言い値で売らない。手取りと売り方を比べる。</h2>
+
+  <div class="two" style="margin-top:14px;">
+    <div>
+      <h3 style="font-size:15px;">買取と仲介、両方の実額を見る</h3>
+      <p style="font-size:12.5px; margin-top:6px;">仲介は高く売れる可能性、買取は早く確実。どちらか一方に誘導されず、両方の手取りを並べて事情（時期・手間・確実さ）で選びます。</p>
+    </div>
+    <div>
+      <h3 style="font-size:15px;">知られずに売る「未公開」</h3>
+      <p style="font-size:12.5px; margin-top:6px;">ポータルに載せず買主候補に直接持ち込めば、入居者・近隣・取引先に知られず売却を進められます。</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:20px;">
+    <h3>こんな時は、一度ご相談を（無料）</h3>
+    <ul class="check">
+      <li>残債があり、売って足りるか分からない</li>
+      <li>築古・旧耐震・再建築不可で、大手に断られた</li>
+      <li>相続した一棟を、兄弟でどう分けるか決まらない</li>
+      <li>入居者・近隣に知られずに売りたい</li>
+      <li>今の査定額が妥当か、セカンドオピニオンが欲しい</li>
+      <li>売るべきか持ち続けるべきか、数字で判断したい</li>
+    </ul>
+  </div>
+  <p style="font-size:12.5px; margin-top:16px;">査定を受けたからといって、売らなければならないことはありません。「今は売らないほうがいい」と判断すれば、その通りにお伝えします。まずは現状の整理から、ご一緒します。</p>
+  <div class="footer"><span>一棟オーナーの出口ガイド</span><span>08</span></div>
+</section>
+
+<!-- CTA -->
+<section class="page cta">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">CONTACT</span></div>
+  <h2 style="margin-bottom:20px;">ご相談・査定は無料です。</h2>
+  <p class="lead" style="margin-bottom:26px;">一棟収益不動産の売却・買取のご相談を承っています。所在地とおおよその賃料が分かれば、机上査定が可能です。営業のお電話を重ねることはありません。</p>
+
+  <div class="box">
+    <div class="row"><span class="k">会社</span><span class="v">株式会社Figo</span></div>
+    <div class="row"><span class="k">担当</span><span class="v">取締役　渋谷 優太</span></div>
+    <div class="row"><span class="k">TEL</span><span class="v big">03-6274-6185</span></div>
+    <div class="row"><span class="k">受付</span><span class="v">平日 9:00 - 18:00</span></div>
+    <div class="row"><span class="k">WEB</span><span class="v">www.f-figo.com/sell/income</span></div>
+    <div class="row"><span class="k">所在地</span><span class="v" style="font-weight:400;">〒105-0004 東京都港区新橋1-12-9 新橋プレイス609</span></div>
+  </div>
+
+  <p style="font-size:12px; color:var(--sub); margin-top:22px;">本冊子で触れた各テーマの詳しい解説は、Figoのサイト（www.f-figo.com）で公開しています。「一棟 ＋ お困りのキーワード」で検索してもご覧いただけます。</p>
+  <div class="footer"><span>一棟オーナーの出口ガイド ／ 株式会社Figo</span><span>宅地建物取引業免許 東京都知事(1)第112936号</span></div>
+</section>
+
+</body>
+</html>

@@ -4,7 +4,7 @@ import { useState, type FormEvent } from 'react';
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
-export type SellFormVariant = 'income' | 'land' | 'general';
+export type SellFormVariant = 'income' | 'land' | 'kubun' | 'general';
 
 type VariantConfig = {
   category: string;
@@ -35,6 +35,17 @@ const variantConfig: Record<SellFormVariant, VariantConfig> = {
     ],
     locationPlaceholder: '例: 江戸川区鹿骨1丁目（番地までなくても構いません）',
   },
+  kubun: {
+    category: '不動産の売却相談（区分・ワンルーム投資）',
+    propertyTypes: [
+      'ワンルーム（投資用区分マンション）',
+      'ファミリータイプの区分マンション（賃貸中）',
+      '自宅として居住中の区分マンション',
+      '複数戸まとめて',
+      'その他',
+    ],
+    locationPlaceholder: '例: 品川区大井1丁目／物件名（番地までなくても構いません）',
+  },
   general: {
     category: '不動産の売却相談',
     propertyTypes: [
@@ -61,6 +72,13 @@ const loanOptions = ['残債あり', '残債なし', 'わからない・回答�
 
 const occupancyOptions = ['空き家・空地', '賃貸中', '居住中', 'その他'];
 
+const subleaseOptions = [
+  'サブリース（家賃保証）契約中',
+  'サブリースなし（通常の賃貸管理）',
+  '空室',
+  'わからない・回答しない',
+];
+
 type Status =
   | { state: 'idle' }
   | { state: 'submitting' }
@@ -79,6 +97,11 @@ function buildMessage(formData: FormData, variant: SellFormVariant) {
   }
   if (variant === 'land') {
     if (get('occupancy')) lines.push(`【現況】${get('occupancy')}`);
+  }
+  if (variant === 'kubun') {
+    if (get('monthlyRent')) lines.push(`【現在の月額家賃】${get('monthlyRent')}`);
+    if (get('loanStatus')) lines.push(`【ローン残債】${get('loanStatus')}`);
+    if (get('sublease')) lines.push(`【サブリース（家賃保証）】${get('sublease')}`);
   }
   if (get('timing')) lines.push(`【売却希望時期】${get('timing')}`);
   const note = get('note');
@@ -288,6 +311,68 @@ export function SellForm({ variant = 'general' }: { variant?: SellFormVariant })
               </select>
             </label>
           </div>
+        ) : null}
+
+        {variant === 'kubun' ? (
+          <>
+            <div>
+              <label htmlFor="sell-monthlyRent" className="block">
+                <span className={labelClass}>
+                  現在の月額家賃 <span className="text-neutral-400">(任意)</span>
+                </span>
+                <input
+                  type="text"
+                  id="sell-monthlyRent"
+                  name="monthlyRent"
+                  disabled={submitting}
+                  placeholder="例: 8.5万円（空室なら以前の家賃で構いません）"
+                  className={cn('mt-2', inputClass)}
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor="sell-loanStatus" className="block">
+                <span className={labelClass}>
+                  ローン残債 <span className="text-neutral-400">(任意)</span>
+                </span>
+                <select
+                  id="sell-loanStatus"
+                  name="loanStatus"
+                  defaultValue=""
+                  disabled={submitting}
+                  className={cn('mt-2 appearance-none', inputClass)}
+                >
+                  <option value="">選択してください</option>
+                  {loanOptions.map((o) => (
+                    <option key={o} value={o}>
+                      {o}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <div>
+              <label htmlFor="sell-sublease" className="block">
+                <span className={labelClass}>
+                  サブリース（家賃保証） <span className="text-neutral-400">(任意)</span>
+                </span>
+                <select
+                  id="sell-sublease"
+                  name="sublease"
+                  defaultValue=""
+                  disabled={submitting}
+                  className={cn('mt-2 appearance-none', inputClass)}
+                >
+                  <option value="">選択してください</option>
+                  {subleaseOptions.map((o) => (
+                    <option key={o} value={o}>
+                      {o}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </>
         ) : null}
 
         <div>
