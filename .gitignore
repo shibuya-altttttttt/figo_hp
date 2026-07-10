@@ -15,3 +15,5 @@ next-env.d.ts
 tsconfig.tsbuildinfo
 
 .vercel
+
+.playwright-mcp

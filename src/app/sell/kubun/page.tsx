@@ -6,6 +6,7 @@ import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/layout/SectionHeading';
 import Link from 'next/link';
 import { SellForm } from '@/components/sections/SellForm';
+import { ButtonLink } from '@/components/ui/Button';
 import { newsArticles } from '@/lib/news';
 import { ServiceJsonLd, FaqPageJsonLd } from '@/components/seo/JsonLd';
 
@@ -331,6 +332,48 @@ export default function SellKubunPage() {
               </li>
             ))}
           </ul>
+        </Container>
+      </Section>
+
+      <Section tone="ink" aria-labelledby="kubun-guide-heading">
+        <Container>
+          <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.9fr)] md:gap-16">
+            <div>
+              <p className="section-heading-en text-accent">Free Guide</p>
+              <h2
+                id="kubun-guide-heading"
+                className="mt-4 font-serif text-h2-sm md:text-h2 font-medium text-white text-balance"
+              >
+                「区分・ワンルーム投資の
+                <br className="md:hidden" />
+                出口ガイド」を無料配布。
+              </h2>
+              <p className="mt-6 text-body leading-[1.95] text-neutral-300">
+                残債・サブリース・新築の値下がり・空室・相続——「売りにくい」「損するだけ」と感じている区分を、仲介と買取の両面から手取りで考えるための小冊子です。よくある疑問と実務上の考え方を、6つのテーマにまとめました。ご相談の前の下調べにどうぞ。
+              </p>
+              <ul className="mt-6 space-y-2 text-body text-neutral-300">
+                <li>・残債があっても売れるのか／団信の考え方</li>
+                <li>・サブリース付き・新築失敗・空室の売り方</li>
+                <li>・損切りの判断と、手取りの計算</li>
+              </ul>
+            </div>
+            <div className="flex flex-col items-start gap-4 md:items-center md:text-center">
+              <ButtonLink
+                href="/guide/kubun-deguchi-guide.html"
+                external
+                variant="primary"
+                size="lg"
+                withArrow
+              >
+                ガイドを読む（無料）
+              </ButtonLink>
+              <p className="text-caption leading-relaxed text-neutral-400">
+                別タブで開きます。ブラウザの印刷メニューから
+                <br className="hidden md:block" />
+                PDF保存もできます（登録不要）。
+              </p>
+            </div>
+          </div>
         </Container>
       </Section>
 

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>区分・ワンルーム投資の出口ガイド | 株式会社Figo</title>
+<style>
+  :root {
+    --ink: #1A1A1A;
+    --paper: #FBF9F5;
+    --paper2: #F4F0E8;
+    --accent: #E8721F;
+    --line: #DED8CC;
+    --sub: #6B6459;
+    --serif: "Yu Mincho", "游明朝", "Hiragino Mincho ProN", serif;
+    --sans: "Yu Gothic", "游ゴシック", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d8d4cc; font-family: var(--sans); color: var(--ink); line-height: 1.9; -webkit-font-smoothing: antialiased; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 12mm auto;
+    background: var(--paper);
+    padding: 22mm 20mm;
+    position: relative;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.18);
+    overflow: hidden;
+  }
+  .page::before {
+    content: "";
+    position: absolute; left: 0; top: 0; right: 0; height: 4px;
+    background: linear-gradient(to right, var(--accent), rgba(232,114,31,0.15));
+  }
+
+  .eyebrow { font-family: var(--sans); font-size: 11px; letter-spacing: .34em; color: var(--accent); font-weight: 700; }
+  .footer { position: absolute; left: 20mm; right: 20mm; bottom: 12mm; display: flex; justify-content: space-between; font-size: 10.5px; color: var(--sub); border-top: 1px solid var(--line); padding-top: 6px; }
+
+  h1 { font-family: var(--serif); font-weight: 600; font-size: 40px; line-height: 1.35; letter-spacing: .02em; }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: 23px; line-height: 1.5; margin-bottom: 4px; }
+  h3 { font-family: var(--serif); font-weight: 600; font-size: 16.5px; color: var(--ink); }
+  p { font-size: 13.5px; color: #2c2a26; }
+  .lead { font-size: 14.5px; line-height: 2.0; }
+
+  /* 表紙 */
+  .cover { display: flex; flex-direction: column; justify-content: center; }
+  .cover .logo { font-family: var(--serif); font-size: 30px; font-weight: 700; letter-spacing: .04em; }
+  .cover .logo span { color: var(--accent); }
+  .cover .title-block { margin-top: 46mm; }
+  .cover h1 { font-size: 46px; }
+  .cover .sub { margin-top: 20px; font-size: 15px; color: var(--sub); max-width: 130mm; line-height: 2.0; }
+  .cover .band { margin-top: 40mm; padding: 18px 22px; background: var(--paper2); border-left: 4px solid var(--accent); }
+  .cover .band p { font-size: 13px; color: #33302b; }
+
+  /* 本文レイアウト */
+  .kicker { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .kicker .bar { width: 26px; height: 2px; background: var(--accent); }
+  .section-intro { color: var(--sub); font-size: 13px; margin: 6px 0 18px; }
+
+  .qa { border-top: 1px solid var(--line); padding: 15px 0 4px; }
+  .qa:last-child { border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+  .qa .q { display: flex; gap: 10px; align-items: baseline; }
+  .qa .q .mark { font-family: var(--serif); color: var(--accent); font-weight: 700; font-size: 18px; flex-shrink: 0; }
+  .qa .q h3 { font-size: 15.5px; }
+  .qa .a { margin: 7px 0 0 26px; font-size: 12.8px; color: #34322d; line-height: 1.85; }
+  .qa .more { margin: 6px 0 0 26px; font-size: 11px; color: var(--accent); letter-spacing: .02em; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; margin-top: 8px; }
+
+  .callout { margin-top: 20px; background: var(--paper2); padding: 16px 20px; border-radius: 4px; }
+  .callout h3 { font-size: 14px; margin-bottom: 6px; }
+  .callout p { font-size: 12.5px; color: #34322d; }
+
+  ul.check { list-style: none; margin-top: 6px; }
+  ul.check li { font-size: 13px; padding: 8px 0 8px 26px; position: relative; border-bottom: 1px dashed var(--line); color: #2c2a26; }
+  ul.check li::before { content: "✓"; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
+
+  /* CTA最終ページ */
+  .cta { display: flex; flex-direction: column; justify-content: center; }
+  .cta .box { border: 1px solid var(--line); border-radius: 6px; padding: 26px 28px; background: #fff; }
+  .cta .row { display: grid; grid-template-columns: 92px 1fr; gap: 6px 14px; font-size: 13.5px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+  .cta .row:last-child { border-bottom: 0; }
+  .cta .row .k { color: var(--sub); font-size: 11.5px; letter-spacing: .12em; padding-top: 2px; }
+  .cta .row .v { color: var(--ink); font-weight: 600; }
+  .cta .big { font-family: var(--serif); font-size: 26px; color: var(--accent); font-weight: 700; }
+
+  .note-print { text-align: center; padding: 14px; color: #555; font-size: 12px; background: #efece6; }
+  @media print {
+    body { background: #fff; }
+    .note-print { display: none; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; width: 100%; min-height: 100vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="note-print">この資料は印刷（A4）／PDF保存を前提に作成しています。ブラウザの印刷メニューから「PDFに保存」でそのまま冊子になります。</div>
+
+<!-- 表紙 -->
+<section class="page cover">
+  <div class="logo">FI<span>G</span>O</div>
+  <div class="title-block">
+    <p class="eyebrow">FOR OWNERS OF INVESTMENT CONDO</p>
+    <h1>区分・ワンルーム<br />投資の出口ガイド</h1>
+    <p class="sub">残債、サブリース、新築の値下がり、空室、相続——「売りにくい」「損するだけ」と感じている区分マンションを、どう出口に向けるか。仲介と買取の両面から、手取りで考えるための一冊です。</p>
+  </div>
+  <div class="band">
+    <p>この冊子は、ワンルーム・区分の投資マンションの売却を検討されている方、そのご相談を受ける税理士・司法書士・管理会社の皆さまに向けて、株式会社Figoが作成しました。</p>
+  </div>
+  <div class="footer"><span>株式会社Figo</span><span>宅地建物取引業免許 東京都知事(1)第112936号</span></div>
+</section>
+
+<!-- はじめに -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">INTRODUCTION</span></div>
+  <h2>「もう売れない・損するだけ」の多くは、思い込みです。</h2>
+  <p class="lead" style="margin-top:16px;">
+    残債が売値を上回っている。サブリースで縛られている。新築で買ったのに大きく値下がりした。空室が埋まらない。相続したが持て余している——。こうした区分マンションを前に、「売れない」「損しかしない」と諦めてしまう方は少なくありません。
+  </p>
+  <p class="lead" style="margin-top:14px;">
+    しかし実務の上では、これらの多くに打ち手があります。区分の売却で大切なのは、売却価格ではなく、残債や税金を差し引いた後に<b>手元にいくら残るか（手取り）</b>、そして<b>持ち続けた場合の累計赤字と比べてどうか</b>で判断することです。
+  </p>
+  <div class="callout">
+    <h3>この冊子の使い方</h3>
+    <p>次のページから、区分オーナーが直面しやすい6つのテーマごとに、よくある疑問と実務上の考え方をまとめています。ご自身の状況に近い項目からお読みください。各テーマの詳しい解説は、末尾のFigoのサイトでも公開しています。</p>
+  </div>
+  <div class="callout" style="margin-top:14px;">
+    <h3>Figoについて</h3>
+    <p>株式会社Figoは、東京・新橋の不動産会社です。区分マンションの売買仲介に加え、自社での買取も行っています。そのため「まず仲介で高く」「難しければ買取で確実に」と、一つの窓口で両にらみのご提案ができます。残債のある物件や、サブリース中の物件、他社で断られた物件のご相談も承っています。</p>
+  </div>
+  <div class="footer"><span>区分・ワンルーム投資の出口ガイド</span><span>01</span></div>
+</section>
+
+<!-- 1 残債・ローン -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 1 ／ 残債・ローンが重い</span></div>
+  <h2>残債が売値を上回っても、区分は売れる。</h2>
+  <p class="section-intro">鍵は「引渡しの日に抵当権を外せるか」。残債の額そのものではありません。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>残債が売却価格を上回りそう。売れますか？</h3></div>
+    <p class="a">売れないとは限りません。決済日に売却代金と手元資金でローンを完済し抵当権を抹消できれば成立します。まず「売ったらいくら足りないか（手出し額）」を確定し、自己資金で埋める・繰上げ返済で残債を減らす・任意売却で調整する、の3つで対処します。</p>
+    <p class="more">▶ 詳しくは「残債が売値を上回る区分マンションを売る」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>団信があるから持ち続けるべき？</h3></div>
+    <p class="a">団信を保険がわりにする考え方は否定しませんが、赤字を垂れ流してまで維持する保険はふつう割に合いません。同じ保障は掛け捨ての生命保険で安く用意できることが多いため、団信を残す理由にするなら、その保険料相当と月々の赤字を比べてみてください。</p>
+    <p class="more">▶ 詳しくは「損切りで売るべきかの判断基準」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>売って損が出ても、税金はかかる？</h3></div>
+    <p class="a">残債が多い区分は帳簿上も利益が小さいか損失のことが多く、その場合は譲渡所得税はかかりません。「税金でさらに足りなくなる」という心配は杞憂なことが少なくありません。ただし減価償却が進んだ物件は簿価が下がり、残債が多くても譲渡益が出ることがあり、個別計算が必要です。</p>
+  </div>
+  <div class="footer"><span>区分・ワンルーム投資の出口ガイド</span><span>02</span></div>
+</section>
+
+<!-- 2 収支悪化・損切り -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 2 ／ 毎月赤字・損切りの判断</span></div>
+  <h2>損切りは負けではなく、計算の問題。</h2>
+  <p class="section-intro">「今売る損失」と「持ち続ける累計赤字＋将来の値下がり」を並べて比べるだけです。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>毎月持ち出しが続く。損切りすべき？</h3></div>
+    <p class="a">まず月々の正味収支（家賃−返済−管理費・修繕積立金−管理手数料−固定資産税）を1円単位で確定します。赤字が構造的で、今後も家賃下落・積立金上昇で拡大するなら、早く売るほど傷は浅い。あと数年で完済が見え家賃も安定しているなら、保有継続も選択肢です。</p>
+    <p class="more">▶ 詳しくは「ワンルーム投資を損切りで売るべきか」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>「年金がわり」と聞いて買ったが赤字です。</h3></div>
+    <p class="a">年金がわりは完済後の話で、それまでの赤字・空室・修繕・家賃下落が抜けていることが多い。毎月赤字なら「年金の原資を前払いで積み立てている」のと同じです。完済までの累計と完済後の実質手残り、今売った手取りを並べて判断します。</p>
+    <p class="more">▶ 詳しくは「年金がわりのはずが赤字のワンルーム」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>管理費・修繕積立金の値上げで赤字化した。</h3></div>
+    <p class="a">修繕積立金は築年とともに上がるのが原則で、当初の2〜3倍になることも。積立金が高い・不足している区分は売値も下がりやすいため、手放すなら条件が悪化する前のほうが高く売れる可能性があります。</p>
+    <p class="more">▶ 詳しくは「管理費・修繕積立金の値上げで区分を手放したいとき」</p>
+  </div>
+  <div class="footer"><span>区分・ワンルーム投資の出口ガイド</span><span>03</span></div>
+</section>
+
+<!-- 3 サブリース -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 3 ／ サブリース（家賃保証）</span></div>
+  <h2>家賃保証付きでも、区分は売れる。</h2>
+  <p class="section-intro">「付けたまま売る」か「解約してから売る」か。売却の順番を間違えないことが大切です。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>サブリース契約中ですが、売れますか？</h3></div>
+    <p class="a">売れます。付けたまま「オーナーチェンジ」で売る方法と、解約してから売る方法があり、どちらが手取りで有利かは契約内容と買い手によります。保証賃料は相場より1〜2割低いことが多く、その低さが売値を下げている場合もあります。</p>
+    <p class="more">▶ 詳しくは「サブリース付きワンルームを売る方法」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>解約してから売ったほうが高い？</h3></div>
+    <p class="a">相場家賃で回せば利回りが上がり売値も上がる可能性があります。ただしサブリースはオーナー側からの解約が簡単でないことがあり、違約金や予告期間の条件も。「解約できるか」「解約して得か」を売りに動く前に必ず確認します。</p>
+  </div>
+  <div class="callout">
+    <h3>順番を決めてから動く</h3>
+    <p>「解約してから売れる」と思って動いたら解約できなかった、では段取りが狂います。契約書の解約条項を確認し、付けたまま売る／解約して売るの手取りを両方試算してから、進め方を決めましょう。買取であればサブリース付きのままでも対応できます。</p>
+  </div>
+  <div class="footer"><span>区分・ワンルーム投資の出口ガイド</span><span>04</span></div>
+</section>
+
+<!-- 4 新築・売れない -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 4 ／ 新築の失敗・売れない</span></div>
+  <h2>「売れない」には理由があり、打ち手がある。</h2>
+  <p class="section-intro">新築プレミアムの剥落は構造的な現象。傷は早いほど浅く済みます。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>新築で買ったが、売ると大きく損しそう。</h3></div>
+    <p class="a">新築の価格には販売会社の広告費・利益（新築プレミアム）が乗っており、一度所有者が変われば中古になり剥落します。数年で1〜2割下がるのは珍しくありません。赤字が構造的なら、値上がりを待つより損失を確定して次に資金を回すほうが傷が浅いことが多い。</p>
+    <p class="more">▶ 詳しくは「新築ワンルーム投資に失敗したと感じたら」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>売りに出したのに買い手が付かない。</h3></div>
+    <p class="a">「売れない」理由はたいてい5つのどれか——①価格が相場より高い ②利回りが出ない ③買い手に融資が付かない ④サブリース等の条件が重い ⑤売り先が投資区分に弱い。理由を切り分ければ、価格調整・現金買い層への的絞り・買取など打ち手があります。</p>
+    <p class="more">▶ 詳しくは「投資用ワンルームが売れない本当の理由」</p>
+  </div>
+  <div class="footer"><span>区分・ワンルーム投資の出口ガイド</span><span>05</span></div>
+</section>
+
+<!-- 5 空室・相続・地方・複数戸 -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 5 ／ 空室・相続・地方・複数戸</span></div>
+  <h2>状況が特殊でも、区分は売れる。</h2>
+  <p class="section-intro">空室でも、相続した物件でも、地方でも、複数戸でも、届く相手に届ければ現金化できます。</p>
+
+  <div class="two">
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>空室が埋まらない</h3></div>
+      <p class="a">投資家は想定家賃で利回りを見るため、空室でも売れます。「埋めてから売る」か「現況で売る」かを手取りと時間で比較します。</p>
+    </div>
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>相続して持て余している</h3></div>
+      <p class="a">まず正味収支を出し、持つ意味があるか確認。相続人が複数なら共有のまま持たず、売って現金で分ける換価分割が揉めにくい。</p>
+    </div>
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>地方のワンルームで買い手が薄い</h3></div>
+      <p class="a">都心より層は薄いが、価格が安いぶん高利回りが出やすい。現金買いの投資家に的を絞る、または買取が現実的です。</p>
+    </div>
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>複数戸をまとめて手放したい</h3></div>
+      <p class="a">手取り最大なら1戸ずつ、早く確実になら一括。「良い数戸は個別に、残りは一括で」の組み合わせが効くことも。</p>
+    </div>
+  </div>
+  <p class="more" style="margin-left:0; margin-top:14px;">▶ 詳しくは各テーマの解説（空室／相続／地方／複数戸まとめて売却）をFigoのサイトで公開しています。</p>
+  <div class="footer"><span>区分・ワンルーム投資の出口ガイド</span><span>06</span></div>
+</section>
+
+<!-- 6 売り方・税金 -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 6 ／ 売り方と、相談の前に</span></div>
+  <h2>一社の言い値で売らない。手取りと売り方を比べる。</h2>
+
+  <div class="two" style="margin-top:14px;">
+    <div>
+      <h3 style="font-size:15px;">買取と仲介、両方の実額を見る</h3>
+      <p style="font-size:12.5px; margin-top:6px;">仲介は高く売れる可能性、買取は早く確実。区分は金額が小さいぶん、価格差と手数料の差が手取りに直結します。どちらか一方に誘導されず、両方の手取りを並べて選びます。</p>
+    </div>
+    <div>
+      <h3 style="font-size:15px;">手取り＝売却価格から、これらを引いた額</h3>
+      <p style="font-size:12.5px; margin-top:6px;">ローン残債の返済／仲介手数料／譲渡所得税／抵当権抹消の登記費用／（サブリースや管理の精算）。特に見落としやすいのが税金です。長く持ち多く償却した物件ほど、安く売っても譲渡益が出ることがあります。</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:20px;">
+    <h3>こんな時は、一度ご相談を（無料）</h3>
+    <ul class="check">
+      <li>残債があり、売って足りるか分からない</li>
+      <li>サブリースで縛られていて売れる気がしない</li>
+      <li>新築で買ったが、売ると損が出そう</li>
+      <li>毎月赤字で、持つべきか売るべきか迷っている</li>
+      <li>今の査定額が妥当か、セカンドオピニオンが欲しい</li>
+      <li>複数戸をまとめて整理したい</li>
+    </ul>
+  </div>
+  <p style="font-size:12.5px; margin-top:16px;">査定を受けたからといって、売らなければならないことはありません。「今は売らないほうがいい」と判断すれば、その通りにお伝えします。まずは現状の整理から、ご一緒します。</p>
+  <p style="font-size:11px; color:var(--sub); margin-top:12px;">※税額は個別の状況により異なります。正確な計算は税理士にご確認ください。Figoは提携の税理士・司法書士と連携して進めます。</p>
+  <div class="footer"><span>区分・ワンルーム投資の出口ガイド</span><span>07</span></div>
+</section>
+
+<!-- CTA -->
+<section class="page cta">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">CONTACT</span></div>
+  <h2 style="margin-bottom:20px;">ご相談・査定は無料です。</h2>
+  <p class="lead" style="margin-bottom:26px;">ワンルーム・区分の投資マンションの売却・買取のご相談を承っています。物件名（または所在地）とおおよその家賃・残債が分かれば、机上査定と手取り試算が可能です。営業のお電話を重ねることはありません。</p>
+
+  <div class="box">
+    <div class="row"><span class="k">会社</span><span class="v">株式会社Figo</span></div>
+    <div class="row"><span class="k">担当</span><span class="v">取締役　渋谷 優太</span></div>
+    <div class="row"><span class="k">TEL</span><span class="v big">03-6274-6185</span></div>
+    <div class="row"><span class="k">受付</span><span class="v">平日 9:00 - 18:00</span></div>
+    <div class="row"><span class="k">WEB</span><span class="v">www.f-figo.com/sell/kubun</span></div>
+    <div class="row"><span class="k">所在地</span><span class="v" style="font-weight:400;">〒105-0004 東京都港区新橋1-12-9 新橋プレイス609</span></div>
+  </div>
+
+  <p style="font-size:12px; color:var(--sub); margin-top:22px;">本冊子で触れた各テーマの詳しい解説は、Figoのサイト（www.f-figo.com）で公開しています。「ワンルーム ＋ お困りのキーワード」で検索してもご覧いただけます。</p>
+  <div class="footer"><span>区分・ワンルーム投資の出口ガイド ／ 株式会社Figo</span><span>宅地建物取引業免許 東京都知事(1)第112936号</span></div>
+</section>
+
+</body>
+</html>
