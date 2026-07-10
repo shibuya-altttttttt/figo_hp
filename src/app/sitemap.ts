@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/services/revitalization', priority: 0.8 },
     { path: '/sell', priority: 0.9 },
     { path: '/sell/income', priority: 0.9 },
+    { path: '/sell/kubun', priority: 0.9 },
     { path: '/sell/land', priority: 0.9 },
     { path: '/buy', priority: 0.8 },
     { path: '/about', priority: 0.7 },
