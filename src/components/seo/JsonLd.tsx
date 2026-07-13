@@ -153,6 +153,11 @@ type ArticleJsonLdProps = {
   url: string;
   datePublished: string;
   dateModified?: string;
+  author?: {
+    name: string;
+    jobTitle?: string;
+    url?: string;
+  };
 };
 
 export function ArticleJsonLd({
@@ -161,7 +166,30 @@ export function ArticleJsonLd({
   url,
   datePublished,
   dateModified,
+  author,
 }: ArticleJsonLdProps) {
+  const authorEntity = author
+    ? {
+        '@type': 'Person',
+        name: author.name,
+        ...(author.jobTitle ? { jobTitle: author.jobTitle } : {}),
+        url: author.url
+          ? author.url.startsWith('http')
+            ? author.url
+            : `${siteConfig.url}${author.url}`
+          : siteConfig.url,
+        worksFor: {
+          '@type': 'Organization',
+          name: siteConfig.name,
+          url: siteConfig.url,
+        },
+      }
+    : {
+        '@type': 'Organization',
+        name: siteConfig.name,
+        url: siteConfig.url,
+      };
+
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -170,11 +198,7 @@ export function ArticleJsonLd({
     datePublished,
     dateModified: dateModified ?? datePublished,
     url: url.startsWith('http') ? url : `${siteConfig.url}${url}`,
-    author: {
-      '@type': 'Organization',
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
+    author: authorEntity,
     publisher: {
       '@type': 'Organization',
       name: siteConfig.name,

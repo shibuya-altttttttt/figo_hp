@@ -101,6 +101,34 @@ export default function SellPage() {
       />
       <Breadcrumb items={[{ label: '売却のご相談' }]} />
 
+      <Section tone="base" padding="sm" aria-labelledby="sell-diagnosis-heading">
+        <Container>
+          <Link
+            href="/shindan"
+            className="group flex flex-col gap-4 rounded-2xl border border-accent/30 bg-accent/[0.04] p-7 transition-colors hover:border-accent/60 sm:flex-row sm:items-center sm:justify-between md:p-9"
+          >
+            <div>
+              <p className="font-sans text-caption font-medium tracking-[0.2em] text-accent">
+                Diagnosis
+              </p>
+              <h2
+                id="sell-diagnosis-heading"
+                className="mt-2 font-serif text-h4 md:text-h3-sm font-medium text-ink"
+              >
+                どこから相談すればいいか迷ったら、まず出口診断。
+              </h2>
+              <p className="mt-2 text-body leading-relaxed text-neutral-700">
+                4つの質問（3分・個人情報不要）で、あなたの不動産に合う売り方が分かります。
+              </p>
+            </div>
+            <span className="inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-accent px-6 py-3 font-sans text-caption font-medium text-white transition-transform group-hover:translate-x-0.5 sm:self-auto">
+              診断をはじめる
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </span>
+          </Link>
+        </Container>
+      </Section>
+
       <Section tone="base" aria-labelledby="sell-paths-heading">
         <Container>
           <SectionHeading

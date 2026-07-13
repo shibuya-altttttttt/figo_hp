@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/services/consulting', priority: 0.8 },
     { path: '/services/revitalization', priority: 0.8 },
     { path: '/sell', priority: 0.9 },
+    { path: '/shindan', priority: 0.8 },
     { path: '/sell/income', priority: 0.9 },
     { path: '/sell/kubun', priority: 0.9 },
     { path: '/sell/land', priority: 0.9 },

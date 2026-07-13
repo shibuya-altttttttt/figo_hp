@@ -9,12 +9,20 @@ import { Section } from '@/components/layout/Section';
 import { Badge } from '@/components/ui/Badge';
 import { MarkdownText } from '@/components/ui/MarkdownText';
 import { CTABanner } from '@/components/ui/CTABanner';
-import { ArticleJsonLd } from '@/components/seo/JsonLd';
+import { ArticleJsonLd, FaqPageJsonLd } from '@/components/seo/JsonLd';
 import {
   getArticleBySlug,
   getRelatedArticles,
   newsArticles,
 } from '@/lib/news';
+import { getNewsFaqs } from '@/lib/newsFaqs';
+
+// コラムの監修者（E-E-A-T: 誰が監修しているかを明示）
+const supervisor = {
+  name: '金 潤求',
+  jobTitle: '株式会社Figo 代表取締役',
+  url: '/about',
+};
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -58,6 +66,8 @@ export default async function NewsArticlePage({ params }: PageProps) {
   }
 
   const related = getRelatedArticles(article);
+  const isColumn = article.category === 'コラム';
+  const faqs = getNewsFaqs(article.slug);
 
   return (
     <>
@@ -66,7 +76,9 @@ export default async function NewsArticlePage({ params }: PageProps) {
         description={article.excerpt}
         url={`/news/${article.slug}`}
         datePublished={article.publishedAt}
+        author={isColumn ? supervisor : undefined}
       />
+      {faqs.length > 0 ? <FaqPageJsonLd items={faqs} /> : null}
       <PageHero
         eyebrow={article.category === 'コラム' ? 'Column' : 'News'}
         title={article.title}
@@ -85,16 +97,29 @@ export default async function NewsArticlePage({ params }: PageProps) {
             記事本文
           </h2>
           <article className="mx-auto max-w-3xl">
-            <header className="mb-12 flex flex-wrap items-center gap-3 border-b border-neutral-200 pb-8">
-              <Badge tone={article.category === 'コラム' ? 'accent' : 'neutral'}>
-                {article.category}
-              </Badge>
-              <time
-                dateTime={article.publishedAt}
-                className="font-sans text-caption font-medium tracking-wider text-neutral-500"
-              >
-                {article.publishedDisplay} 公開
-              </time>
+            <header className="mb-12 border-b border-neutral-200 pb-8">
+              <div className="flex flex-wrap items-center gap-3">
+                <Badge tone={article.category === 'コラム' ? 'accent' : 'neutral'}>
+                  {article.category}
+                </Badge>
+                <time
+                  dateTime={article.publishedAt}
+                  className="font-sans text-caption font-medium tracking-wider text-neutral-500"
+                >
+                  {article.publishedDisplay} 公開
+                </time>
+              </div>
+              {isColumn ? (
+                <p className="mt-4 font-sans text-caption text-neutral-500">
+                  監修：
+                  <Link
+                    href={supervisor.url}
+                    className="font-medium text-neutral-700 underline-offset-2 transition-colors hover:text-accent hover:underline"
+                  >
+                    {supervisor.name}（{supervisor.jobTitle}・宅地建物取引業）
+                  </Link>
+                </p>
+              ) : null}
             </header>
 
             <p className="font-serif text-body-lg leading-[1.95] text-neutral-700">
@@ -104,6 +129,35 @@ export default async function NewsArticlePage({ params }: PageProps) {
             <div className="mt-12">
               <MarkdownText source={article.body} />
             </div>
+
+            {faqs.length > 0 ? (
+              <section
+                aria-labelledby="article-faq-heading"
+                className="mt-16 border-t border-neutral-200 pt-10"
+              >
+                <h2
+                  id="article-faq-heading"
+                  className="font-serif text-h3-sm md:text-h3 font-medium text-ink"
+                >
+                  よくある質問
+                </h2>
+                <dl className="mt-8 space-y-8">
+                  {faqs.map((item) => (
+                    <div key={item.question} className="border-t border-neutral-200 pt-6">
+                      <dt className="flex gap-3 font-serif text-body-lg font-medium text-ink">
+                        <span aria-hidden="true" className="text-accent">
+                          Q.
+                        </span>
+                        <span>{item.question}</span>
+                      </dt>
+                      <dd className="mt-3 pl-7 text-body leading-[1.95] text-neutral-700">
+                        {item.answer}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+            ) : null}
 
             <footer className="mt-16 border-t border-neutral-200 pt-8">
               <Link

@@ -34,7 +34,7 @@ export const cases: CaseRecord[] = [
     closedDate: '2026-03-20',
     closedDisplay: '2026年3月',
     image: {
-      src: '/images/cases/hishiwa-shinagawa-nakanobu/exterior.png',
+      src: '/images/cases/hishiwa-shinagawa-nakanobu/exterior.webp',
       alt: '菱和パレス品川中延(東京都品川区二葉)の外観',
       objectPosition: 'center',
     },
@@ -55,7 +55,7 @@ export const cases: CaseRecord[] = [
     closedDate: '2025-12-23',
     closedDisplay: '2025年12月',
     image: {
-      src: '/images/cases/wien-residence/exterior-v2.png',
+      src: '/images/cases/wien-residence/exterior-v2.webp',
       alt: 'ウィーンレジデンス（埼玉県戸田市）の外観',
       objectPosition: 'center',
     },
@@ -73,7 +73,7 @@ export const cases: CaseRecord[] = [
     closedDate: '2025-12-08',
     closedDisplay: '2025年12月',
     image: {
-      src: '/images/cases/rose-mansion/exterior.png',
+      src: '/images/cases/rose-mansion/exterior.webp',
       alt: 'ローズマンション白糸台第三（東京都府中市白糸台）の外観',
       objectPosition: 'center',
     },
@@ -93,7 +93,7 @@ export const cases: CaseRecord[] = [
     closedDate: '2025-10-31',
     closedDisplay: '2025年10月',
     image: {
-      src: '/images/cases/hachioji/exterior.png',
+      src: '/images/cases/hachioji/exterior.webp',
       alt: '西八王子1棟の外観',
       objectPosition: 'center',
     },
@@ -107,7 +107,7 @@ export const cases: CaseRecord[] = [
     closedDate: '2025-08-26',
     closedDisplay: '2025年8月',
     image: {
-      src: '/images/cases/vanvillage-nakatsuma/exterior.png',
+      src: '/images/cases/vanvillage-nakatsuma/exterior.webp',
       alt: 'ヴァンビラージュ中妻（埼玉県）の外観',
       objectPosition: 'center',
     },
@@ -127,7 +127,7 @@ export const cases: CaseRecord[] = [
     closedDate: '2025-08-21',
     closedDisplay: '2025年8月',
     image: {
-      src: '/images/cases/haim-soshigaya/exterior-v2.png',
+      src: '/images/cases/haim-soshigaya/exterior-v2.webp',
       alt: 'ハイム橘（東京都世田谷区祖師谷）の外観',
       objectPosition: 'center',
     },
