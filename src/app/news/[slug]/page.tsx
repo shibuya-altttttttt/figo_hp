@@ -159,7 +159,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
               </section>
             ) : null}
 
-            <footer className="mt-16 border-t border-neutral-200 pt-8">
+            <footer className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-neutral-200 pt-8">
               <Link
                 href="/news"
                 className="inline-flex items-center gap-2 font-sans text-body font-medium text-ink transition-colors hover:text-accent"
@@ -167,6 +167,18 @@ export default async function NewsArticlePage({ params }: PageProps) {
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                 お知らせ一覧へ戻る
               </Link>
+              {isColumn ? (
+                <Link
+                  href="/shindan"
+                  className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 font-sans text-caption font-medium text-white transition-all hover:bg-accent-dark"
+                >
+                  売却の出口診断（3分・無料）
+                  <ArrowRight
+                    className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </Link>
+              ) : null}
             </footer>
           </article>
         </Container>

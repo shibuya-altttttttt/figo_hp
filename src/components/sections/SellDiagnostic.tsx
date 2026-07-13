@@ -61,6 +61,24 @@ const questions = {
 
 const steps: (keyof Answers)[] = ['property', 'concern', 'loan', 'timing'];
 
+function labelOf<T extends string>(options: readonly Option<T>[], value: T): string {
+  return options.find((o) => o.value === value)?.label ?? value;
+}
+
+function buildContactHref(answers: Required<Answers>): string {
+  const message = [
+    '【売却の出口診断より】',
+    `・物件タイプ：${labelOf(questions.property.options, answers.property)}`,
+    `・お悩み：${labelOf(questions.concern.options, answers.concern)}`,
+    `・ローン残債：${labelOf(questions.loan.options, answers.loan)}`,
+    `・売却時期：${labelOf(questions.timing.options, answers.timing)}`,
+    '',
+    '上記の内容で、手取り試算・ご相談を希望します。',
+  ].join('\n');
+  const params = new URLSearchParams({ category: '不動産の売却相談', message });
+  return `/contact?${params.toString()}`;
+}
+
 const propertyResult: Record<
   PropertyType,
   { title: string; href: string; pageLabel: string; guide?: { href: string; label: string } }
@@ -148,6 +166,7 @@ export function SellDiagnostic() {
     const notes = [concernMessage[answers.concern], loanNote[answers.loan], timingNote[answers.timing]].filter(
       (n): n is string => Boolean(n),
     );
+    const contactHref = buildContactHref(answers as Required<Answers>);
 
     return (
       <div className="rounded-2xl border border-neutral-200 bg-base p-8 md:p-12">
@@ -169,7 +188,7 @@ export function SellDiagnostic() {
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Link
-            href="/contact"
+            href={contactHref}
             className="inline-flex min-h-[56px] items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 font-sans text-body font-medium text-white shadow-sm transition-all duration-200 hover:bg-accent-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             この内容で無料相談する

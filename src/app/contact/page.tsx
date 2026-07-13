@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { Phone, Clock, MapPin } from 'lucide-react';
 import { PageHero } from '@/components/sections/PageHero';
 import { Breadcrumb } from '@/components/layout/Breadcrumb';
@@ -114,7 +115,9 @@ export default function ContactPage() {
             </aside>
 
             <div>
-              <ContactForm />
+              <Suspense fallback={null}>
+                <ContactForm />
+              </Suspense>
             </div>
           </div>
         </Container>

@@ -39,6 +39,16 @@ export function SellPreview() {
             />
             <div className="mt-8 flex flex-col gap-3">
               <Link
+                href="/shindan"
+                className="group inline-flex w-fit items-center gap-2 rounded-full bg-accent px-6 py-3 font-sans text-caption font-medium text-white transition-all hover:bg-accent-dark"
+              >
+                3分でわかる 売却の出口診断（無料）
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
+              <Link
                 href="/sell"
                 className="group inline-flex items-center gap-2 font-sans text-body font-medium text-ink transition-colors hover:text-accent"
               >

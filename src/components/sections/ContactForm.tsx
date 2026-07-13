@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
@@ -21,6 +22,10 @@ type Status =
 export function ContactForm() {
   const [status, setStatus] = useState<Status>({ state: 'idle' });
   const [fieldErrors, setFieldErrors] = useState<Set<string>>(new Set());
+  const searchParams = useSearchParams();
+  const prefillCategoryRaw = searchParams.get('category') ?? '';
+  const prefillCategory = categories.includes(prefillCategoryRaw) ? prefillCategoryRaw : '';
+  const prefillMessage = searchParams.get('message') ?? '';
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -208,7 +213,7 @@ export function ContactForm() {
             <select
               id="category"
               name="category"
-              defaultValue=""
+              defaultValue={prefillCategory}
               disabled={submitting}
               className={cn('mt-2 appearance-none', inputClass('category'))}
             >
@@ -235,6 +240,7 @@ export function ContactForm() {
             name="message"
             required
             rows={7}
+            defaultValue={prefillMessage}
             disabled={submitting}
             className={cn('mt-2 resize-y leading-[1.75]', inputClass('message'))}
             placeholder="物件の概要、ご状況、ご希望などをご記入ください。"
