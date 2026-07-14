@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { PageHero } from '@/components/sections/PageHero';
@@ -16,6 +17,7 @@ import {
   newsArticles,
 } from '@/lib/news';
 import { getNewsFaqs } from '@/lib/newsFaqs';
+import { getNewsThumb } from '@/lib/newsThumb';
 
 // コラムの監修者（E-E-A-T: 誰が監修しているかを明示）
 const supervisor = {
@@ -204,6 +206,15 @@ export default async function NewsArticlePage({ params }: PageProps) {
                     href={`/news/${other.slug}`}
                     className="group flex flex-col rounded-lg border border-neutral-200 bg-base p-7 transition-all duration-300 ease-smooth hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_24px_48px_-24px_rgba(26,26,26,0.25)] md:p-8"
                   >
+                    <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-md bg-neutral-200/60">
+                      <Image
+                        src={getNewsThumb(other.slug)}
+                        alt=""
+                        fill
+                        sizes="(max-width: 768px) 100vw, 400px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
                     <div className="flex items-center gap-3">
                       <Badge tone={other.category === 'コラム' ? 'accent' : 'neutral'}>
                         {other.category}

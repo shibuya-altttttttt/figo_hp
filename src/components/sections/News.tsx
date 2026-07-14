@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
@@ -6,6 +7,7 @@ import { SectionHeading } from '@/components/layout/SectionHeading';
 import { TextLink } from '@/components/ui/TextLink';
 import { Badge } from '@/components/ui/Badge';
 import { sortedNews } from '@/lib/news';
+import { getNewsThumb } from '@/lib/newsThumb';
 
 export function News() {
   const previews = sortedNews.slice(0, 3);
@@ -30,11 +32,20 @@ export function News() {
             <li key={item.slug}>
               <Link
                 href={`/news/${item.slug}`}
-                className="group flex flex-col gap-3 py-6 transition-colors hover:bg-neutral-100/40 md:flex-row md:items-center md:gap-8 md:py-7"
+                className="group flex flex-col gap-4 py-6 transition-colors hover:bg-neutral-100/40 md:flex-row md:items-center md:gap-6 md:py-7"
               >
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-md bg-neutral-200/60 md:aspect-[4/3] md:w-32 md:shrink-0">
+                  <Image
+                    src={getNewsThumb(item.slug)}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, 128px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
                 <time
                   dateTime={item.publishedAt}
-                  className="font-sans text-caption font-medium tracking-wider text-neutral-500 md:w-28"
+                  className="font-sans text-caption font-medium tracking-wider text-neutral-500 md:w-24"
                 >
                   {item.publishedDisplay}
                 </time>
