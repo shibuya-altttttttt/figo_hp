@@ -5,6 +5,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/layout/SectionHeading';
 import { SellForm } from '@/components/sections/SellForm';
+import { ButtonLink } from '@/components/ui/Button';
 import { ServiceJsonLd, FaqPageJsonLd } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
@@ -287,6 +288,48 @@ export default function SellLandPage() {
                 </div>
               ))}
             </dl>
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="ink" aria-labelledby="land-guide-heading">
+        <Container>
+          <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.9fr)] md:gap-16">
+            <div>
+              <p className="section-heading-en text-accent">Free Guide</p>
+              <h2
+                id="land-guide-heading"
+                className="mt-4 font-serif text-h2-sm md:text-h2 font-medium text-white text-balance"
+              >
+                「土地・戸建ての
+                <br className="md:hidden" />
+                出口ガイド」を無料配布。
+              </h2>
+              <p className="mt-6 text-body leading-[1.95] text-neutral-300">
+                相続した実家、空き家、使っていない土地——名義・解体・税の特例まで、手取りで考えるための小冊子です。よくある疑問と実務上の考え方を、5つのテーマにまとめました。ご相談の前の下調べにどうぞ。
+              </p>
+              <ul className="mt-6 space-y-2 text-body text-neutral-300">
+                <li>・相続した実家・空き家の名義と放置リスク</li>
+                <li>・解体するか、古家付きで売るか</li>
+                <li>・3,000万円特別控除と、手取りの計算</li>
+              </ul>
+            </div>
+            <div className="flex flex-col items-start gap-4 md:items-center md:text-center">
+              <ButtonLink
+                href="/guide/tochi-deguchi-guide.html"
+                external
+                variant="primary"
+                size="lg"
+                withArrow
+              >
+                ガイドを読む（無料）
+              </ButtonLink>
+              <p className="text-caption leading-relaxed text-neutral-400">
+                別タブで開きます。ブラウザの印刷メニューから
+                <br className="hidden md:block" />
+                PDF保存もできます（登録不要）。
+              </p>
+            </div>
           </div>
         </Container>
       </Section>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>土地・戸建て（相続・空き家）の出口ガイド | 株式会社Figo</title>
+<style>
+  :root {
+    --ink: #1A1A1A;
+    --paper: #FBF9F5;
+    --paper2: #F4F0E8;
+    --accent: #E8721F;
+    --line: #DED8CC;
+    --sub: #6B6459;
+    --serif: "Yu Mincho", "游明朝", "Hiragino Mincho ProN", serif;
+    --sans: "Yu Gothic", "游ゴシック", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #d8d4cc; font-family: var(--sans); color: var(--ink); line-height: 1.9; -webkit-font-smoothing: antialiased; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 12mm auto;
+    background: var(--paper);
+    padding: 22mm 20mm;
+    position: relative;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.18);
+    overflow: hidden;
+  }
+  .page::before {
+    content: "";
+    position: absolute; left: 0; top: 0; right: 0; height: 4px;
+    background: linear-gradient(to right, var(--accent), rgba(232,114,31,0.15));
+  }
+
+  .eyebrow { font-family: var(--sans); font-size: 11px; letter-spacing: .34em; color: var(--accent); font-weight: 700; }
+  .footer { position: absolute; left: 20mm; right: 20mm; bottom: 12mm; display: flex; justify-content: space-between; font-size: 10.5px; color: var(--sub); border-top: 1px solid var(--line); padding-top: 6px; }
+
+  h1 { font-family: var(--serif); font-weight: 600; font-size: 40px; line-height: 1.35; letter-spacing: .02em; }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: 23px; line-height: 1.5; margin-bottom: 4px; }
+  h3 { font-family: var(--serif); font-weight: 600; font-size: 16.5px; color: var(--ink); }
+  p { font-size: 13.5px; color: #2c2a26; }
+  .lead { font-size: 14.5px; line-height: 2.0; }
+
+  .cover { display: flex; flex-direction: column; justify-content: center; }
+  .cover .logo { font-family: var(--serif); font-size: 30px; font-weight: 700; letter-spacing: .04em; }
+  .cover .logo span { color: var(--accent); }
+  .cover .title-block { margin-top: 46mm; }
+  .cover h1 { font-size: 44px; }
+  .cover .sub { margin-top: 20px; font-size: 15px; color: var(--sub); max-width: 130mm; line-height: 2.0; }
+  .cover .band { margin-top: 40mm; padding: 18px 22px; background: var(--paper2); border-left: 4px solid var(--accent); }
+  .cover .band p { font-size: 13px; color: #33302b; }
+
+  .kicker { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .kicker .bar { width: 26px; height: 2px; background: var(--accent); }
+  .section-intro { color: var(--sub); font-size: 13px; margin: 6px 0 18px; }
+
+  .qa { border-top: 1px solid var(--line); padding: 15px 0 4px; }
+  .qa:last-child { border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+  .qa .q { display: flex; gap: 10px; align-items: baseline; }
+  .qa .q .mark { font-family: var(--serif); color: var(--accent); font-weight: 700; font-size: 18px; flex-shrink: 0; }
+  .qa .q h3 { font-size: 15.5px; }
+  .qa .a { margin: 7px 0 0 26px; font-size: 12.8px; color: #34322d; line-height: 1.85; }
+  .qa .more { margin: 6px 0 0 26px; font-size: 11px; color: var(--accent); letter-spacing: .02em; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; margin-top: 8px; }
+
+  .callout { margin-top: 20px; background: var(--paper2); padding: 16px 20px; border-radius: 4px; }
+  .callout h3 { font-size: 14px; margin-bottom: 6px; }
+  .callout p { font-size: 12.5px; color: #34322d; }
+
+  ul.check { list-style: none; margin-top: 6px; }
+  ul.check li { font-size: 13px; padding: 8px 0 8px 26px; position: relative; border-bottom: 1px dashed var(--line); color: #2c2a26; }
+  ul.check li::before { content: "✓"; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
+
+  .cta { display: flex; flex-direction: column; justify-content: center; }
+  .cta .box { border: 1px solid var(--line); border-radius: 6px; padding: 26px 28px; background: #fff; }
+  .cta .row { display: grid; grid-template-columns: 92px 1fr; gap: 6px 14px; font-size: 13.5px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+  .cta .row:last-child { border-bottom: 0; }
+  .cta .row .k { color: var(--sub); font-size: 11.5px; letter-spacing: .12em; padding-top: 2px; }
+  .cta .row .v { color: var(--ink); font-weight: 600; }
+  .cta .big { font-family: var(--serif); font-size: 26px; color: var(--accent); font-weight: 700; }
+
+  .note-print { text-align: center; padding: 14px; color: #555; font-size: 12px; background: #efece6; }
+  @media print {
+    body { background: #fff; }
+    .note-print { display: none; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; width: 100%; min-height: 100vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="note-print">この資料は印刷（A4）／PDF保存を前提に作成しています。ブラウザの印刷メニューから「PDFに保存」でそのまま冊子になります。</div>
+
+<!-- 表紙 -->
+<section class="page cover">
+  <div class="logo">FI<span>G</span>O</div>
+  <div class="title-block">
+    <p class="eyebrow">FOR OWNERS OF LAND &amp; HOUSE</p>
+    <h1>土地・戸建ての<br />出口ガイド</h1>
+    <p class="sub">相続した実家、空き家、使っていない土地——「何から手を付ければいいか」「そのまま置いておいてよいのか」。名義・解体・税の特例まで、手取りで考えるための一冊です。</p>
+  </div>
+  <div class="band">
+    <p>この冊子は、相続した実家・空き家・土地・戸建ての売却を検討されている方、そのご相談を受ける税理士・司法書士・金融機関の皆さまに向けて、株式会社Figoが作成しました。</p>
+  </div>
+  <div class="footer"><span>株式会社Figo</span><span>宅地建物取引業免許 東京都知事(1)第112936号</span></div>
+</section>
+
+<!-- はじめに -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">INTRODUCTION</span></div>
+  <h2>「とりあえずそのまま」が、一番損をしやすい。</h2>
+  <p class="lead" style="margin-top:16px;">
+    相続した実家、誰も住まなくなった家、使っていない土地。思い出やきょうだいの事情もあり、つい「とりあえずそのまま」にしてしまう——よくあることです。しかし空き家や遊休地は、<b>持ち続けるほど傷み、価値も選択肢も減っていきます。</b>固定資産税や管理の手間もかかり続けます。
+  </p>
+  <p class="lead" style="margin-top:14px;">
+    大切なのは、売却価格そのものより、解体費・税金・諸費用を引いた後に<b>手元にいくら残るか（手取り）</b>で考えること。そして、相続登記や税の特例には<b>期限</b>があること。売ると決めていなくても、早めに整理を始めるほうが有利です。
+  </p>
+  <div class="callout">
+    <h3>この冊子の使い方</h3>
+    <p>次のページから、土地・戸建てのオーナーが直面しやすい5つのテーマごとに、よくある疑問と実務上の考え方をまとめています。ご自身の状況に近い項目からお読みください。各テーマの詳しい解説は、末尾のFigoのサイトでも公開しています。</p>
+  </div>
+  <div class="callout" style="margin-top:14px;">
+    <h3>Figoについて</h3>
+    <p>株式会社Figoは、東京・新橋の不動産会社です。土地・戸建ての売買仲介に加え、自社での買取も行っています。「まず仲介で高く」「難しければ買取で確実に」と、一つの窓口で両にらみのご提案ができます。相続・空き家・古家付き土地など、手のかかる案件のご相談も承っています。</p>
+  </div>
+  <div class="footer"><span>土地・戸建ての出口ガイド</span><span>01</span></div>
+</section>
+
+<!-- 1 相続・空き家 -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 1 ／ 相続した実家・空き家</span></div>
+  <h2>空き家は、放置するほど不利になる。</h2>
+  <p class="section-intro">まず確認すべきは「名義」と「期限」。片付けや解体は、その後で構いません。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>名義が親のままですが、売れますか？</h3></div>
+    <p class="a">そのままでは売れません。まず亡くなった方から相続人への相続登記（名義変更）が必要です。2024年4月から義務化されました。相続人が複数なら全員の合意も要り、次の相続が起きるほど複雑になるため、早めの着手が有利です。</p>
+    <p class="more">▶ 詳しくは「相続した実家を売る——空き家にする前に考える出口」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>片付けや解体をしてからでないと売れませんか？</h3></div>
+    <p class="a">現況のまま売れます。残置物ごと買う買い手や業者もいます。現況で売る・整理して売る・解体して売るの、どれが手取りで得かは立地や解体費によります。まず今の状態のままご相談ください。</p>
+    <p class="more">▶ 詳しくは「空き家をそのまま売れるのか——放置のリスクと売り方」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>放置しておくと何が起きますか？</h3></div>
+    <p class="a">建物が傷んで価値が下がり、税や管理コストがかかり続けます。管理不全だと「特定空家」に指定され、固定資産税の住宅用地特例が外れて<b>税額が最大約6倍</b>になったり、行政指導の対象になることもあります。</p>
+  </div>
+  <div class="footer"><span>土地・戸建ての出口ガイド</span><span>02</span></div>
+</section>
+
+<!-- 2 解体か古家付きか -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 2 ／ 解体するか、古家付きで売るか</span></div>
+  <h2>「更地にすれば売れる」は、いつも正解ではない。</h2>
+  <p class="section-intro">解体費と税負担を、増える売値と比べてから決めます。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>古い家、解体してから売るべき？</h3></div>
+    <p class="a">更地は買い手を探しやすくなりますが、解体費（木造でおおむね100万〜200万円台）がかかり、更地にすると住宅用地特例が外れて固定資産税が最大約6倍になることも。「更地にして増える売値」と「解体費＋税負担」を比べ、手取りが大きいほうを選びます。</p>
+    <p class="more">▶ 詳しくは「古家付き土地は解体してから売るべきか」</p>
+  </div>
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>古家付きのまま売る利点は？</h3></div>
+    <p class="a">解体費がかからず、住宅用地の固定資産税特例が続きます。リノベ目的の実需や解体前提の業者など買い手の幅も意外と広く、解体費を織り込んで売れば売主の持ち出しを抑えられます。</p>
+  </div>
+  <div class="callout">
+    <h3>解体後に売れ残ると、税負担だけが増える</h3>
+    <p>先に解体したものの買い手が付かないと、上がった固定資産税を払い続けることになります。「解体してから」と動く前に、両方の手取りを試算するのが失敗を防ぐコツです。</p>
+  </div>
+  <div class="footer"><span>土地・戸建ての出口ガイド</span><span>03</span></div>
+</section>
+
+<!-- 3 売れない土地 -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 3 ／ 売れない土地・訳あり</span></div>
+  <h2>「売れない土地」にも、たいてい打ち手がある。</h2>
+  <p class="section-intro">まず「なぜ売れないか」を切り分ける。原因が分かれば手を打てます。</p>
+
+  <div class="two">
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>接道が悪い／旗竿地</h3></div>
+      <p class="a">建てられる建物が限られ敬遠されがち。隣地所有者が最も買う動機を持つことが多く、まず打診を。</p>
+    </div>
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>再建築不可</h3></div>
+      <p class="a">現況利用の投資家や、隣地と一体で解消できる業者が買います。43条許可の可能性も検討します。</p>
+    </div>
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>境界が曖昧</h3></div>
+      <p class="a">確定測量をしてから売ると、買い手が付きやすく価格も安定。急ぐなら現況のまま売る道も。</p>
+    </div>
+    <div class="qa" style="border-bottom:1px solid var(--line);">
+      <div class="q"><span class="mark">Q</span><h3>広すぎる・需要が薄い</h3></div>
+      <p class="a">分筆して売る、活用業者に売る、隣地・地元・現金買いに的を絞る、などで動かします。</p>
+    </div>
+  </div>
+  <p class="more" style="margin-left:0; margin-top:14px;">▶ 詳しくは「売れない土地を売る方法」「境界が確定していない土地は売れるのか」をFigoのサイトで公開しています。</p>
+  <div class="footer"><span>土地・戸建ての出口ガイド</span><span>04</span></div>
+</section>
+
+<!-- 4 税金・手取り -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 4 ／ 税金と手取り</span></div>
+  <h2>大事なのは売却価格ではなく、手取り。</h2>
+  <p class="section-intro">相続した空き家には、大きな特例があります。取りこぼさないことが肝心です。</p>
+
+  <div class="qa">
+    <div class="q"><span class="mark">Q</span><h3>相続した空き家の売却に、使える特例は？</h3></div>
+    <p class="a">条件を満たせば「被相続人の居住用財産（空き家）を売ったときの3,000万円特別控除」が使えます。譲渡益から最大3,000万円を差し引ける大きな特例です。1981年5月以前建築・相続後は空き家・耐震改修か解体・相続開始から3年後の年末まで、などが主な条件です。</p>
+    <p class="more">▶ 詳しくは「空き家を売るときの3,000万円特別控除——使える条件」</p>
+  </div>
+  <div class="callout">
+    <h3>手取り＝売却価格から、これらを引いた額</h3>
+    <p>仲介手数料／譲渡所得税・住民税（特例が使えれば大きく減る）／（解体する場合）解体費／建物滅失や相続登記などの登記費用／測量費用。特に相続案件は<b>特例の適用可否と期限</b>で手取りが大きく動きます。売る前の確認が何より大切です。</p>
+  </div>
+  <p style="font-size:11px; color:var(--sub); margin-top:12px;">※税額・適用要件は個別の状況により異なります。正確な計算は税理士にご確認ください。Figoは提携の税理士・司法書士と連携して進めます。</p>
+  <div class="footer"><span>土地・戸建ての出口ガイド</span><span>05</span></div>
+</section>
+
+<!-- 5 売り方・相談前に -->
+<section class="page">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">THEME 5 ／ 売り方と、相談の前に</span></div>
+  <h2>一社の言い値で売らない。手取りと売り方を比べる。</h2>
+
+  <div class="two" style="margin-top:14px;">
+    <div>
+      <h3 style="font-size:15px;">仲介と買取、両方の実額を見る</h3>
+      <p style="font-size:12.5px; margin-top:6px;">仲介は高く売れる可能性、買取は早く確実（残置物・現況のまま引き取りも）。どちらか一方に誘導されず、両方の手取りを並べて事情で選びます。</p>
+    </div>
+    <div>
+      <h3 style="font-size:15px;">底地・借地のご相談も</h3>
+      <p style="font-size:12.5px; margin-top:6px;">貸している土地（底地）、借りている土地の建物（借地権）も出口はつくれます。借地人との交渉や同時売却も含めてご相談ください。</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:20px;">
+    <h3>こんな時は、一度ご相談を（無料）</h3>
+    <ul class="check">
+      <li>相続した実家・空き家を、どうするか決まらない</li>
+      <li>名義が親のままで、何から手を付ければいいか分からない</li>
+      <li>解体してから売るべきか、古家付きで売るべきか迷う</li>
+      <li>接道・再建築不可・境界などで「売れない」と言われた</li>
+      <li>3,000万円の特例が使えるか、手取りがいくらか知りたい</li>
+      <li>きょうだいで、土地の分け方が決まらない</li>
+    </ul>
+  </div>
+  <p style="font-size:12.5px; margin-top:16px;">査定を受けたからといって、売らなければならないことはありません。「今は売らないほうがいい」と判断すれば、その通りにお伝えします。まずは現状の整理から、ご一緒します。</p>
+  <div class="footer"><span>土地・戸建ての出口ガイド</span><span>06</span></div>
+</section>
+
+<!-- CTA -->
+<section class="page cta">
+  <div class="kicker"><span class="bar"></span><span class="eyebrow">CONTACT</span></div>
+  <h2 style="margin-bottom:20px;">ご相談・査定は無料です。</h2>
+  <p class="lead" style="margin-bottom:26px;">相続した実家・空き家・土地・戸建ての売却・買取のご相談を承っています。所在地とおおよその広さが分かれば、机上査定が可能です。営業のお電話を重ねることはありません。</p>
+
+  <div class="box">
+    <div class="row"><span class="k">会社</span><span class="v">株式会社Figo</span></div>
+    <div class="row"><span class="k">担当</span><span class="v">取締役　渋谷 優太</span></div>
+    <div class="row"><span class="k">TEL</span><span class="v big">03-6274-6185</span></div>
+    <div class="row"><span class="k">受付</span><span class="v">平日 9:00 - 18:00</span></div>
+    <div class="row"><span class="k">WEB</span><span class="v">www.f-figo.com/sell/land</span></div>
+    <div class="row"><span class="k">所在地</span><span class="v" style="font-weight:400;">〒105-0004 東京都港区新橋1-12-9 新橋プレイス609</span></div>
+  </div>
+
+  <p style="font-size:12px; color:var(--sub); margin-top:22px;">本冊子で触れた各テーマの詳しい解説は、Figoのサイト（www.f-figo.com）で公開しています。「実家 相続 売却」「空き家 売却」などで検索してもご覧いただけます。</p>
+  <div class="footer"><span>土地・戸建ての出口ガイド ／ 株式会社Figo</span><span>宅地建物取引業免許 東京都知事(1)第112936号</span></div>
+</section>
+
+</body>
+</html>
