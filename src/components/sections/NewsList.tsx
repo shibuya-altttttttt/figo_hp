@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
+import { getNewsThumb } from '@/lib/newsThumb';
 import type { NewsArticle, NewsCategory } from '@/lib/news';
 
 type Filter = 'all' | NewsCategory;
@@ -65,21 +67,30 @@ export function NewsList({ articles }: NewsListProps) {
             <li key={article.slug}>
               <Link
                 href={`/news/${article.slug}`}
-                className="group grid gap-3 py-7 transition-colors hover:bg-neutral-100/40 md:grid-cols-[140px_minmax(0,1fr)_24px] md:items-start md:gap-8 md:py-8"
+                className="group grid gap-4 py-7 transition-colors hover:bg-neutral-100/40 md:grid-cols-[200px_minmax(0,1fr)_24px] md:items-start md:gap-8 md:py-8"
               >
-                <div className="flex items-center gap-3 md:flex-col md:items-start md:gap-2">
-                  <time
-                    dateTime={article.publishedAt}
-                    className="font-sans text-caption font-medium tracking-wider text-neutral-500"
-                  >
-                    {article.publishedDisplay}
-                  </time>
-                  <Badge tone={article.category === 'コラム' ? 'accent' : 'neutral'}>
-                    {article.category}
-                  </Badge>
+                <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-neutral-200/60 md:aspect-[4/3]">
+                  <Image
+                    src={getNewsThumb(article.slug)}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, 200px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
                 <div>
-                  <p className="font-serif text-h4 md:text-h3-sm font-medium text-ink transition-colors group-hover:text-accent">
+                  <div className="flex items-center gap-3">
+                    <time
+                      dateTime={article.publishedAt}
+                      className="font-sans text-caption font-medium tracking-wider text-neutral-500"
+                    >
+                      {article.publishedDisplay}
+                    </time>
+                    <Badge tone={article.category === 'コラム' ? 'accent' : 'neutral'}>
+                      {article.category}
+                    </Badge>
+                  </div>
+                  <p className="mt-3 font-serif text-h4 md:text-h3-sm font-medium text-ink transition-colors group-hover:text-accent">
                     {article.title}
                   </p>
                   <p className="mt-3 text-body leading-[1.85] text-neutral-700">
