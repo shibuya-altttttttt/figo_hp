@@ -163,7 +163,7 @@ export default function SellKubunPage() {
         }
         lead="残債・サブリース・新築の値下がりで「売りにくい」と感じる区分マンション。仲介と買取の両面から、手取り額で出口を組み立てます。"
         image={{
-          src: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=2400&q=85',
+          src: '/images/hero/city.webp',
           alt: '区分マンションの外観イメージ',
         }}
       />
